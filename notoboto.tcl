@@ -8,3 +8,8 @@ package require json
 
 set configfile "~/.config/Miniboost.json"
 
+set width [expr { [winfo vrootwidth  .] / 4 * 3 }]
+set height [expr { [winfo vrootheight .] / 4 * 3 }]
+set x 0
+set y [expr { [winfo vrootheight .] - $height }]
+
