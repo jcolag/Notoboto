@@ -35,3 +35,10 @@ set fg [dict get $config "foregroundColor"]
 close $confp
 close $mapp
 
+font create uifont -family TkDefaultFont -size 14
+# [dict get $config "textSize"]
+font create txfont -family TkFixedFont -size 18
+# [dict get $config "textSize"]
+image create photo icon48 -file notoboto-48.png
+image create photo icon512 -file notoboto-512.png
+
