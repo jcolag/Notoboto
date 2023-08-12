@@ -115,3 +115,13 @@ foreach {folder} $folders {
   .fr.pnl.choose.topics.topic itemconfigure end -foreground [dict get $folder "color"]
 }
 
+# Set handler for changing the subject selection.
+bind .fr.pnl.choose.topics.topic <<ListboxSelect>> {
+  set idx [%W curselection]
+  set temp [openFolder $idx $folders $noteroot getNote $matches]
+
+  if {$temp != -1} {
+    set matches $temp
+  }
+}
+
