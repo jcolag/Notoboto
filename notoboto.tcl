@@ -125,3 +125,17 @@ bind .fr.pnl.choose.topics.topic <<ListboxSelect>> {
   }
 }
 
+# Set handler for changing the note selection.
+bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
+  set idx [%W curselection]
+
+  if {$idx == ""} {
+    return
+  }
+
+  set current_note [lindex $matches $idx]
+
+  .fr.pnl.notearea delete 0.0 end
+  .fr.pnl.notearea insert 0.0 [dict get $current_note content]
+}
+
