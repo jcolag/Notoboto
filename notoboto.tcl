@@ -139,3 +139,13 @@ bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
   .fr.pnl.notearea insert 0.0 [dict get $current_note content]
 }
 
+# Handle the expired typing timer.
+proc typingTimeout {} {
+  after cancel $::typing_timer
+  if {$::saving} {
+    return
+  }
+
+  global current_note
+  set $::saving true
+}
