@@ -160,3 +160,45 @@ proc typingTimeout {} {
   global current_note
   set $::saving true
 }
+# Find all note files that match the subject's key.
+proc openFolder { idx folders root getNote matches } {
+  if {$idx == ""} {
+    return -1
+  }
+
+  set path [append files $root "/notes/*.cson"]
+  set files [glob $path]
+  set o [lindex $folders $idx]
+  set key [dict get $o "key"]
+  set count 0
+  set matches [list]
+
+  .fr.pnl.choose.notes.note delete 0 end
+  foreach {file} $files {
+    set fp [open $file r]
+    set text [read $fp]
+    close $fp
+
+    if {[string first $key $text] != -1} {
+      set obj [parseCson $text]
+      set title [dict get $obj title]
+      set title [string trim $title '"']
+
+      if {![dict get $obj isTrashed]} {
+        # Add the title to the note list if the note hasn't been
+        # deleted and it's part of the folder.
+        lappend matches $obj
+        incr count
+      }
+    }
+  }
+
+  set matches [lsort -command recency -decreasing $matches]
+
+  foreach {match} $matches {
+    .fr.pnl.choose.notes.note insert end [dict get $match title]
+  }
+
+  return $matches
+}
+
