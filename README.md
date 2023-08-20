@@ -4,7 +4,7 @@ I apparently needed to take another pass at a note-taking application, this time
 
 ## History (of the Project, Not in General)
 
-One upon a time, I used the original version of [**Boost Note**](https://boostnote.io/) to manage my notes.  It didn't do too much, and despite the overhead of an Electron app, it generally worked, which kept me happy.
+Once upon a time, I used the original version of [**Boost Note**](https://boostnote.io/) to manage my notes.  It didn't do too much, and despite the overhead of an Electron app, it generally worked, which kept me happy.
 
 When the **Boost Note** team decided to form a service business and overhaul their application, I wished them well, but decided that I didn't fit the target audience for that.  I wanted something lighter-weight, with no worries about somebody else's security.  But I also want to work with my existing notes, which **Boost Note** stored as Markdown-embedded-in-CSON, where CSON comes from CoffeeScript's object notation model comparable to JSON, and where Microsoft tried to push CoffeeScript as the natural evolution to JavaScript, because Microsoft either has no sense of irony or has forgotten about the [Microsoft Coffee](https://microsoft-coffee.medium.com/) debacle.
 
@@ -28,5 +28,5 @@ You'll need Tcl/Tk on your system to run this, until I can figure out the curren
 
 After that, run the script, and I'll try to keep it working as much like **Miniboost** as I can, with notes auto-saving when you stop typing and making themselves available on a least-recently-used basis.
 
-Over time, I might add features, because Tk's `text` widget can apparently support searching, formatting, and many other features that Proton Native couldn't and even Electron would've required work.
+Over time, I might add features, because Tk's `text` widget can apparently support searching, formatting, and many other features that Proton Native couldn't and even Electron would've required work.  I would also like to migrate the notes away from CSON, at some point, so that I don't need to rely on my shaky custom code.
 
