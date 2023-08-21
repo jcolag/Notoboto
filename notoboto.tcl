@@ -22,6 +22,7 @@ set notefile [append notefile $noteroot "/boostnote.json"]
 set mapp [open $notefile r]
 set map_json [read $mapp]
 set map [::json::json2dict $map_json]
+set typing_timer {}
 set saving false
 
 set folders_unsorted [dict get $map "folders"]
