@@ -202,3 +202,15 @@ proc openFolder { idx folders root getNote matches } {
   return $matches
 }
 
+# Compare dates for sorting.
+proc recency { a b } {
+  set date1 [dict get $a updatedAt]
+  set date2 [dict get $b updatedAt]
+
+  if {$date2 < $date1} {
+    return 1
+  }
+
+  return -1
+}
+
