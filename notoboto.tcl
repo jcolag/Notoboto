@@ -203,6 +203,11 @@ proc openFolder { idx folders root getNote matches } {
   return $matches
 }
 
+# Open the note in the text control.
+proc openNote { idx } {
+  return $idx
+}
+
 # Compare dates for sorting.
 proc recency { a b } {
   set date1 [dict get $a updatedAt]
