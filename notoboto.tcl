@@ -160,6 +160,18 @@ proc typingTimeout {} {
 
   global current_note
   set $::saving true
+  set filename [dict get $current_note key]
+  set stats [dict get $current_note stats]
+  set now [clock seconds]
+
+  # Update content
+  set text [.fr.pnl.notearea get 1.0 end]
+  set lines [split $text "\n"]
+  set first [join [lrange $lines 0 0]]
+  set first [string trim $first "#"]
+  dict set current_note content $text
+  dict set current_note title [string trim $first]
+
 }
 # Find all note files that match the subject's key.
 proc openFolder { idx folders root getNote matches } {
