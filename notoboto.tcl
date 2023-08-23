@@ -286,3 +286,38 @@ proc parseCson {cson_string} {
 }
 
 # Transform a Tcl dictionary into a CSON string
+proc stringifyCson {obj} {
+  set result ""
+  set keys [dict keys $obj]
+
+  foreach {key} $keys {
+    set value [dict get $obj $key]
+    set lines [split $value "\n"]
+
+    if {[llength $lines] > 1} {
+      # Key is a multi-line string.
+      append result "$key: '''\n"
+      foreach {line} $lines {
+        append result "  $line\n"
+      }
+      set result [string trim $result]
+      append result "\n'''\n"
+    } elseif {[expr {[string is list $value] && ([llength $value]&1) == 0}] && [llength $value] > 20} {
+      # Print a sub-object.
+      set inner [stringifyCson $value]
+      append result "$key:\n"
+      foreach {l} [split $inner "\n"] {
+        append result "  $l\n"
+      }
+    } else {
+      # Print single-line key/value pairs.
+      if {[regexp {[A-Za-z]} $value] && ![string match "'*'" $value] && $value != true && $value != false} {
+        set value "'$value'"
+      }
+      append result "$key: $value\n"
+    }
+  }
+
+  return [string trim $result]
+}
+
