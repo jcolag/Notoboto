@@ -172,6 +172,13 @@ proc typingTimeout {} {
   dict set current_note content $text
   dict set current_note title [string trim $first]
 
+  # Update timestamps.
+  set time [clock format $now -gmt true -format "%Y-%m-%dT%H:%M:%S.000Z"]
+  dict set stats mtime $time
+  dict set stats mtimeMs [expr $now * 1000]
+  dict set current_note stats $stats
+  dict set current_note updatedAt $time
+
 }
 # Find all note files that match the subject's key.
 proc openFolder { idx folders root getNote matches } {
