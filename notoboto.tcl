@@ -179,6 +179,13 @@ proc typingTimeout {} {
   dict set current_note stats $stats
   dict set current_note updatedAt $time
 
+  # Write the file.
+  set cson [stringifyCson $current_note]
+  set path [append path $::noteroot "/notes/" $filename]
+  set fp [open $path w]
+  puts $fp $cson
+  close $fp
+  set $::saving false
 }
 # Find all note files that match the subject's key.
 proc openFolder { idx folders root getNote matches } {
