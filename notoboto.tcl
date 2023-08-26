@@ -4,7 +4,9 @@
 # away from Boost Note.
 
 package require Img
+package require Tclx
 package require json
+package require uuid
 
 set configfile "~/.config/Miniboost.json"
 
