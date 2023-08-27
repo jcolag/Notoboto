@@ -27,6 +27,7 @@ set map [::json::json2dict $map_json]
 set typing_timer {}
 set saving false
 
+set current_folder -1
 set folders_unsorted [dict get $map "folders"]
 set folders [lsort -index 5 $folders_unsorted]
 set matches [list]
@@ -122,6 +123,7 @@ foreach {folder} $folders {
 bind .fr.pnl.choose.topics.topic <<ListboxSelect>> {
   set idx [%W curselection]
   set temp [openFolder $idx $folders $noteroot getNote $matches]
+  set current_folder $idx
 
   if {$temp != -1} {
     set matches $temp
