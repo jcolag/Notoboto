@@ -191,6 +191,19 @@ proc typingTimeout {} {
   close $fp
   set $::saving false
 }
+
+# Handle requests for new notes.
+proc newNote { } {
+  global current_folder
+  global folders
+  set note [dict create]
+  set stats [dict create]
+  set now [clock seconds]
+  set time [clock format $now -gmt true -format "%Y-%m-%dT%H:%M:%S.000Z"]
+  set folder [lindex $folders $current_folder]
+
+}
+
 # Find all note files that match the subject's key.
 proc openFolder { idx folders root getNote matches } {
   if {$idx == ""} {
