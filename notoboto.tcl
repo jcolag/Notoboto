@@ -69,7 +69,7 @@ pack .fr.pnl.choose.topics -side top
 scrollbar .fr.pnl.choose.topics.topicscroll -orient vertical -background $bg -command ".fr.pnl.choose.topics.topic yview"
 pack .fr.pnl.choose.topics.topicscroll -side right -fill y -expand 1
 
-listbox .fr.pnl.choose.topics.topic -background $bg -foreground $fg -font uifont -yscrollcommand ".fr.pnl.choose.topics.topicscroll set"
+listbox .fr.pnl.choose.topics.topic -background $bg -foreground $fg -font uifont -yscrollcommand ".fr.pnl.choose.topics.topicscroll set" -exportselection false
 pack .fr.pnl.choose.topics.topic -side left
 
 frame .fr.pnl.choose.category -background $bg
@@ -89,7 +89,7 @@ pack .fr.pnl.choose.notes -side top
 scrollbar .fr.pnl.choose.notes.notescroll -orient vertical -background $bg -command ".fr.pnl.choose.notes.note yview"
 pack .fr.pnl.choose.notes.notescroll -side right -fill y -expand 1
 
-listbox .fr.pnl.choose.notes.note -background $bg -foreground $fg -font uifont -yscrollcommand ".fr.pnl.choose.notes.notescroll set"
+listbox .fr.pnl.choose.notes.note -background $bg -foreground $fg -font uifont -yscrollcommand ".fr.pnl.choose.notes.notescroll set" -exportselection false
 pack .fr.pnl.choose.notes.note -side top -expand 1 -fill y
 
 button .fr.pnl.choose.view -text "View in Browser 🌐" -background $bg -foreground $fg -font uifont
@@ -155,7 +155,7 @@ proc resetTimer {} {
   set ::typing_timer [after 1000 typingTimeout]
 }
 
-# Handle the expired typing timer.
+# Handle the expired typing timer by writing out the updated note.
 proc typingTimeout {} {
   after cancel $::typing_timer
   if {$::saving} {
