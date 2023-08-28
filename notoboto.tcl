@@ -157,10 +157,12 @@ proc resetTimer {} {
 
 # Handle the expired typing timer by writing out the updated note.
 proc typingTimeout {} {
-  after cancel $::typing_timer
   if {$::saving} {
+    # Don't interfere with an existing action.
     return
   }
+
+  after cancel $::typing_timer
 
   global current_note
   set $::saving true
