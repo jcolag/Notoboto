@@ -204,6 +204,16 @@ proc newNote { } {
   set time [clock format $now -gmt true -format "%Y-%m-%dT%H:%M:%S.000Z"]
   set folder [lindex $folders $current_folder]
 
+  dict set note createdAt $time
+  dict set note updatedAt $time
+  dict set note type "MARKDOWN_NOTE"
+  dict set note folder [dict get $folder key]
+  dict set note title "Untitled Note"
+  dict set note content ""
+  dict set note tags {}
+  dict set note isStarred false
+  dict set note isTrahsed false
+
 }
 
 # Find all note files that match the subject's key.
