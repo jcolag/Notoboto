@@ -231,6 +231,9 @@ proc newNote { } {
   dict set stats ctime $time
   dict set stats mtime $time
   dict set stats birthtime $time
+
+  dict set note stats $stats
+  dict set note key [uuid::uuid generate]
 }
 
 # Find all note files that match the subject's key.
