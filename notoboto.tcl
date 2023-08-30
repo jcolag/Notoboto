@@ -214,6 +214,23 @@ proc newNote { } {
   dict set note isStarred false
   dict set note isTrahsed false
 
+  dict set stats dev 64769
+  dict set stats mode 33204
+  dict set stats nlink 1
+  dict set stats uid [id userid]
+  dict set stats gid [id groupid]
+  dict set stats rdev 0
+  dict set stats blksize 4096
+  dict set stats ino 0
+  dict set stats size 0
+  dict set stats blocks 24
+  dict set stats atimeMs $now
+  dict set stats mtimeMs $now
+  dict set stats ctimeMs $now
+  dict set stats atime $time
+  dict set stats ctime $time
+  dict set stats mtime $time
+  dict set stats birthtime $time
 }
 
 # Find all note files that match the subject's key.
