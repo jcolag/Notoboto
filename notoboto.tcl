@@ -198,6 +198,7 @@ proc typingTimeout {} {
 proc newNote { } {
   global current_folder
   global folders
+  global matches
   set note [dict create]
   set stats [dict create]
   set now [clock seconds]
@@ -234,6 +235,10 @@ proc newNote { } {
 
   dict set note stats $stats
   dict set note key [uuid::uuid generate]
+
+  set matches [linsert $matches 0 $note]
+  .fr.pnl.choose.notes.note insert 0 [dict get $note title]
+  .fr.pnl.choose.notes.note see 0
 }
 
 # Find all note files that match the subject's key.
