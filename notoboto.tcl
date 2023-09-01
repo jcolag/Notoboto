@@ -98,7 +98,7 @@ pack .fr.pnl.choose.view -side top -fill x
 button .fr.pnl.choose.auto -text "Auto-Preview ✅❌" -background $bg -foreground $fg -font uifont
 pack .fr.pnl.choose.auto -side top -fill x
 
-button .fr.pnl.choose.new -text "New Note ➕" -background $bg -foreground $fg -font uifont
+button .fr.pnl.choose.new -text "New Note ➕" -background $bg -foreground $fg -font uifont -command newNote
 pack .fr.pnl.choose.new -side top -fill x
 
 button .fr.pnl.choose.reload -text "Reload File 🔃" -background $bg -foreground $fg -font uifont
