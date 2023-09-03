@@ -213,7 +213,7 @@ proc newNote { } {
   dict set note content ""
   dict set note tags {}
   dict set note isStarred false
-  dict set note isTrahsed false
+  dict set note isTrashed false
 
   dict set stats dev 64769
   dict set stats mode 33204
