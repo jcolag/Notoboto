@@ -204,6 +204,7 @@ proc newNote { } {
   set now [clock seconds]
   set time [clock format $now -gmt true -format "%Y-%m-%dT%H:%M:%S.000Z"]
   set folder [lindex $folders $current_folder]
+  set key [uuid::uuid generate]
 
   dict set note createdAt $time
   dict set note updatedAt $time
@@ -234,7 +235,7 @@ proc newNote { } {
   dict set stats birthtime $time
 
   dict set note stats $stats
-  dict set note key [uuid::uuid generate]
+  dict set note key "$key.cson"
 
   set matches [linsert $matches 0 $note]
   .fr.pnl.choose.notes.note insert 0 [dict get $note title]
