@@ -4,6 +4,7 @@
 # away from Boost Note.
 
 package require Img
+package require Markdown
 package require Tclx
 package require json
 package require uuid
