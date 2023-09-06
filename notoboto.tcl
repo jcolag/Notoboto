@@ -195,6 +195,31 @@ proc typingTimeout {} {
   set $::saving false
 }
 
+# Open a preview of the current note
+proc previewNote { } {
+  global current_note
+  global config
+
+  set md [dict get $current_note content]
+  set title [dict get $current_note title]
+  set key [dict get $current_note key]
+
+  set style [dict get $config exportStyle]
+  set fa [dict get $config fontAwesomeKit]
+  set out_folder [dict get $config tempDire]
+
+  set header "<html><head><title>$title</title><meta charset='utf-8'><style>$style</style>$fa</head><body>"
+  set footer "</body></html>"
+
+  set html [::Markdown::convert $md]
+  set filename "$key.html"
+  set path "$out_folder/$filename"
+  set fp [open $path w]
+
+  puts $fp "$header$html$footer"
+  close $fp
+}
+
 # Handle requests for new notes.
 proc newNote { } {
   global current_folder
