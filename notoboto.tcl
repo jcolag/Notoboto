@@ -93,7 +93,7 @@ pack .fr.pnl.choose.notes.notescroll -side right -fill y -expand 1
 listbox .fr.pnl.choose.notes.note -background $bg -foreground $fg -font uifont -yscrollcommand ".fr.pnl.choose.notes.notescroll set" -exportselection false
 pack .fr.pnl.choose.notes.note -side top -expand 1 -fill y
 
-button .fr.pnl.choose.view -text "View in Browser 🌐" -background $bg -foreground $fg -font uifont
+button .fr.pnl.choose.view -text "View in Browser 🌐" -background $bg -foreground $fg -font uifont -command previewNote
 pack .fr.pnl.choose.view -side top -fill x
 
 button .fr.pnl.choose.auto -text "Auto-Preview ✅❌" -background $bg -foreground $fg -font uifont
