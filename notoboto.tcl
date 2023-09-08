@@ -208,7 +208,7 @@ proc previewNote { } {
   set fa [dict get $config fontAwesomeKit]
   set out_folder [dict get $config tempDire]
 
-  set header "<html><head><title>$title</title><meta charset='utf-8'><style>$style</style>$fa</head><body>"
+  set header "<!DOCTYPE html><html><head><title>$title</title><meta charset='utf-8'><style>$style</style>$fa</head><body>"
   set footer "</body></html>"
 
   set html [::Markdown::convert $md]
