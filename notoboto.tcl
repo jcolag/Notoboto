@@ -34,9 +34,10 @@ set folders [lsort -index 5 $folders_unsorted]
 set matches [list]
 set current_note [dict create]
 
-set bg [dict get $config "backgroundColor"]
-set fg [dict get $config "foregroundColor"]
 set color_theme [exec gsettings get org.gnome.desktop.interface gtk-theme]
+
+set bg [dict get $config backgroundColor]
+set fg [dict get $config foregroundColor]
 
 close $confp
 close $mapp
