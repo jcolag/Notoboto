@@ -36,6 +36,7 @@ set current_note [dict create]
 
 set bg [dict get $config "backgroundColor"]
 set fg [dict get $config "foregroundColor"]
+set color_theme [exec gsettings get org.gnome.desktop.interface gtk-theme]
 
 close $confp
 close $mapp
