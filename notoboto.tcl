@@ -82,16 +82,12 @@ pack .fr.pnl.choose.topics.topic -side left
 frame .fr.pnl.choose.category -background $bg
 pack .fr.pnl.choose.category -side top
 
-# These two controls will need to get re-oriented, once we have the facility
-# to hide and otherwise modify widgets set up.
-button .fr.pnl.choose.category.addtopic -text "New Category ➕" -background $bg -foreground $fg -font uifont
-pack .fr.pnl.choose.category.addtopic -side top -fill y
+button .fr.pnl.choose.category.addtopic -text "New Category ➕" -background $bg -foreground $fg -font uifont -command newCategory
+pack .fr.pnl.choose.category.addtopic -side left -fill y
 
 entry .fr.pnl.choose.category.catname -background $bg -foreground $fg -font uifont
-pack .fr.pnl.choose.category.catname -side bottom
 
 frame .fr.pnl.choose.notes -background $bg
-pack .fr.pnl.choose.notes -side top
 
 scrollbar .fr.pnl.choose.notes.notescroll -orient vertical -background $bg -command ".fr.pnl.choose.notes.note yview"
 pack .fr.pnl.choose.notes.notescroll -side right -fill y -expand 1
