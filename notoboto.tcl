@@ -42,6 +42,10 @@ set fg [dict get $config foregroundColor]
 close $confp
 close $mapp
 
+if {[dict exists $config darkBackgroundColor] && [string first dark $color_theme] >= 0} {
+  set bg [dict get $config darkBackgroundColor]
+}
+
 font create uifont -family TkDefaultFont -size 14
 # [dict get $config "textSize"]
 font create txfont -family TkFixedFont -size 18
