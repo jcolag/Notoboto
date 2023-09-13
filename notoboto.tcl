@@ -97,16 +97,12 @@ listbox .fr.pnl.choose.notes.note -background $bg -foreground $fg -font uifont -
 pack .fr.pnl.choose.notes.note -side top -expand 1 -fill y
 
 button .fr.pnl.choose.view -text "View in Browser 🌐" -background $bg -foreground $fg -font uifont -command previewNote
-pack .fr.pnl.choose.view -side top -fill x
 
 button .fr.pnl.choose.auto -text "Auto-Preview ✅❌" -background $bg -foreground $fg -font uifont
-pack .fr.pnl.choose.auto -side top -fill x
 
 button .fr.pnl.choose.new -text "New Note ➕" -background $bg -foreground $fg -font uifont -command newNote
-pack .fr.pnl.choose.new -side top -fill x
 
 button .fr.pnl.choose.reload -text "Reload File 🔃" -background $bg -foreground $fg -font uifont
-pack .fr.pnl.choose.reload -side top -fill x
 
 scrollbar .fr.pnl.textscroll -orient vertical -background $bg -command ".fr.pnl.notearea yview"
 pack .fr.pnl.textscroll -side right -fill y -expand 1
@@ -132,6 +128,11 @@ bind .fr.pnl.choose.topics.topic <<ListboxSelect>> {
   if {$temp != -1} {
     set matches $temp
   }
+  pack .fr.pnl.choose.notes -side top
+  pack forget .fr.pnl.choose.view -side top -fill x
+  pack forget .fr.pnl.choose.auto -side top -fill x
+  pack forget .fr.pnl.choose.new -side top -fill x
+  pack forget .fr.pnl.choose.reload -side top -fill x
 }
 
 # Set handler for changing the note selection.
@@ -146,6 +147,10 @@ bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
 
   .fr.pnl.notearea delete 0.0 end
   .fr.pnl.notearea insert 0.0 [dict get $current_note content]
+  pack .fr.pnl.choose.view -side top -fill x
+  pack .fr.pnl.choose.auto -side top -fill x
+  pack .fr.pnl.choose.new -side top -fill x
+  pack .fr.pnl.choose.reload -side top -fill x
 }
 
 # Bind a timeout to keystrokes.
