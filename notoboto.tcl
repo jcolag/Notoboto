@@ -27,6 +27,7 @@ set map_json [read $mapp]
 set map [::json::json2dict $map_json]
 set typing_timer {}
 set saving false
+set creating_category false
 
 set current_folder -1
 set folders_unsorted [dict get $map "folders"]
@@ -269,6 +270,24 @@ proc newNote { } {
   set matches [linsert $matches 0 $note]
   .fr.pnl.choose.notes.note insert 0 [dict get $note title]
   .fr.pnl.choose.notes.note see 0
+}
+
+# Add a category to the notes.
+proc newCategory { } {
+  global creating_category
+  global bg
+  global fg
+
+  if {$creating_category} {
+    set creating_category false
+    pack forget .fr.pnl.choose.category.catname
+    .fr.pnl.choose.category.addtopic configure -text "New Category ➕" -background $bg -foreground $fg
+  } else {
+    set creating_category true
+    .fr.pnl.choose.category.catname delete 0 end
+    pack .fr.pnl.choose.category.catname -side right
+    .fr.pnl.choose.category.addtopic configure -text "➕" -background $bg -foreground $fg
+  }
 }
 
 # Find all note files that match the subject's key.
