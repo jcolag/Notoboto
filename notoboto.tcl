@@ -28,6 +28,7 @@ set map [::json::json2dict $map_json]
 set typing_timer {}
 set saving false
 set creating_category false
+set update_preview false
 
 set current_folder -1
 set folders_unsorted [dict get $map "folders"]
@@ -174,6 +175,7 @@ proc typingTimeout {} {
   after cancel $::typing_timer
 
   global current_note
+  global update_preview
   set $::saving true
   set filename [dict get $current_note key]
   set stats [dict get $current_note stats]
@@ -201,6 +203,10 @@ proc typingTimeout {} {
   puts $fp $cson
   close $fp
   set $::saving false
+
+  if {$update_preview} {
+    previewNote false
+  }
 }
 
 # Open a preview of the current note
