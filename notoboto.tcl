@@ -210,9 +210,10 @@ proc typingTimeout {} {
 }
 
 # Open a preview of the current note
-proc previewNote { } {
-  global current_note
+proc previewNote {{ open true }} {
   global config
+  global current_note
+  global update_preview
 
   set md [dict get $current_note content]
   set title [dict get $current_note title]
