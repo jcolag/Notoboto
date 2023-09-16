@@ -223,7 +223,13 @@ proc previewNote {{ open true }} {
   set fa [dict get $config fontAwesomeKit]
   set out_folder [dict get $config tempDire]
 
-  set header "<!DOCTYPE html><html><head><title>$title</title><meta charset='utf-8'><style>$style</style>$fa</head><body>"
+  set refresh ""
+
+  if {$update_preview} {
+    set refresh "<script>setTimeout(() => location.reload(), 12000);</script>"
+  }
+
+  set header "<!DOCTYPE html><html><head><title>$title</title><meta charset='utf-8'>$refresh<style>$style</style>$fa</head><body>"
   set footer "</body></html>"
 
   set html [::Markdown::convert $md]
