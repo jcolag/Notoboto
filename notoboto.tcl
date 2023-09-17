@@ -310,6 +310,21 @@ proc newCategory { } {
   }
 }
 
+# Toggle whether to automatically update the note preview.
+proc autoUpdate {} {
+  global update_preview
+  global bg
+  global fg
+
+  if {$update_preview} {
+    set update_preview false
+    .fr.pnl.choose.auto configure -text "Auto-Preview ❌" -background $bg -foreground $fg -font uifont
+  } else {
+    set update_preview true
+    .fr.pnl.choose.auto configure -text "Auto-Preview ✅" -background $bg -foreground $fg -font uifont
+  }
+}
+
 # Find all note files that match the subject's key.
 proc openFolder { idx folders root getNote matches } {
   if {$idx == ""} {
