@@ -239,7 +239,9 @@ proc previewNote {{ open true }} {
 
   puts $fp "$header$html$footer"
   close $fp
-  set code [catch { exec xdg-open $path } result]
+  if {$open} {
+    set code [catch { exec xdg-open $path } result]
+  }
 }
 
 # Handle requests for new notes.
