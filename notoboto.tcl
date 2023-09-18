@@ -99,7 +99,7 @@ pack .fr.pnl.choose.notes.note -side top -expand 1 -fill y
 
 button .fr.pnl.choose.view -text "View in Browser 🌐" -background $bg -foreground $fg -font uifont -command previewNote
 
-button .fr.pnl.choose.auto -text "Auto-Preview ✅❌" -background $bg -foreground $fg -font uifont
+button .fr.pnl.choose.auto -text "Auto-Preview ❌" -background $bg -foreground $fg -font uifont -command autoUpdate
 
 button .fr.pnl.choose.new -text "New Note ➕" -background $bg -foreground $fg -font uifont -command newNote
 
