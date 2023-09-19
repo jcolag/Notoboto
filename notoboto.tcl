@@ -302,6 +302,8 @@ proc newCategory { } {
     global notefile
 
     set creating_category false
+    set category [.fr.pnl.choose.category.catname get]
+
     pack forget .fr.pnl.choose.category.catname
     .fr.pnl.choose.category.addtopic configure -text "New Category ➕" -background $bg -foreground $fg
   } else {
