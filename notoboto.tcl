@@ -306,6 +306,10 @@ proc newCategory { } {
 
     pack forget .fr.pnl.choose.category.catname
     .fr.pnl.choose.category.addtopic configure -text "New Category ➕" -background $bg -foreground $fg
+    if {$category ne ""} {
+      set cat [dict create]
+
+    }
   } else {
     set creating_category true
     .fr.pnl.choose.category.catname delete 0 end
