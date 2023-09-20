@@ -309,6 +309,10 @@ proc newCategory { } {
     if {$category ne ""} {
       set cat [dict create]
 
+      # Placeholder until I can figure out the 20-hex-digit values.
+      dict set cat key [uuid::uuid generate]
+      # Placeholder until I generate random colors.
+      dict set cat color "#777777"
       dict set cat name $category
       dict set notefile $cat
     }
