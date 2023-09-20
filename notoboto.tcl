@@ -309,6 +309,8 @@ proc newCategory { } {
     if {$category ne ""} {
       set cat [dict create]
 
+      dict set cat name $category
+      dict set notefile $cat
     }
   } else {
     set creating_category true
