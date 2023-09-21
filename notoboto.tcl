@@ -129,6 +129,7 @@ bind .fr.pnl.choose.topics.topic <<ListboxSelect>> {
   if {$temp != -1} {
     set matches $temp
   }
+
   pack .fr.pnl.choose.notes -side top
   pack forget .fr.pnl.choose.view -side top -fill x
   pack forget .fr.pnl.choose.auto -side top -fill x
@@ -318,6 +319,7 @@ proc newCategory { } {
     }
   } else {
     set creating_category true
+
     .fr.pnl.choose.category.catname delete 0 end
     pack .fr.pnl.choose.category.catname -side right
     .fr.pnl.choose.category.addtopic configure -text "➕" -background $bg -foreground $fg
