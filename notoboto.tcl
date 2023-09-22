@@ -326,6 +326,10 @@ proc newCategory { } {
   }
 }
 
+# Reload the current note.
+proc reloadNote {} {
+}
+
 # Toggle whether to automatically update the note preview.
 proc autoUpdate {} {
   global update_preview
