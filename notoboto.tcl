@@ -103,7 +103,7 @@ button .fr.pnl.choose.auto -text "Auto-Preview ❌" -background $bg -foreground 
 
 button .fr.pnl.choose.new -text "New Note ➕" -background $bg -foreground $fg -font uifont -command newNote
 
-button .fr.pnl.choose.reload -text "Reload File 🔃" -background $bg -foreground $fg -font uifont
+button .fr.pnl.choose.reload -text "Reload File 🔃" -background $bg -foreground $fg -font uifont -command reloadNote
 
 scrollbar .fr.pnl.textscroll -orient vertical -background $bg -command ".fr.pnl.notearea yview"
 pack .fr.pnl.textscroll -side right -fill y -expand 1
