@@ -44,6 +44,8 @@ set fg [dict get $config foregroundColor]
 close $confp
 close $mapp
 
+foreach argValue $argv {
+}
 if {[dict exists $config darkBackgroundColor] && [string first dark $color_theme] >= 0} {
   set bg [dict get $config darkBackgroundColor]
 }
