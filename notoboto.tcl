@@ -45,7 +45,12 @@ close $confp
 close $mapp
 
 foreach argValue $argv {
+  if {[string first "--theme=" $argValue] == 0} {
+    set parts [split $argValue "="]
+    set color_theme [lindex $parts 1]
+  }
 }
+
 if {[dict exists $config darkBackgroundColor] && [string first dark $color_theme] >= 0} {
   set bg [dict get $config darkBackgroundColor]
 }
