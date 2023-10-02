@@ -321,7 +321,6 @@ proc newCategory { } {
       # Placeholder until I generate random colors.
       dict set cat color "#777777"
       dict set cat name $category
-      dict set notefile $cat
     }
   } else {
     set creating_category true
