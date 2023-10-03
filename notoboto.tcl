@@ -409,7 +409,15 @@ proc recency { a b } {
   return -1
 }
 
-# Transform CSON into a Tcl dictionary
+# Generate a random color
+proc randomColor {} {
+  set h [expr { int(256 * rand()) }]
+  set s [expr { int(256 * rand()) }]
+  set v [expr { int(256 * rand()) }]
+  lassign [hsvToRgb $h $s $v] r g b
+  return [format "#%02x%02x%02x" $r $g $b]
+}
+
 # Convert HSV colors to RGB
 proc hsvToRgb {h s v} {
   set Hi [expr { int( double($h) / 60 ) % 6 }]
