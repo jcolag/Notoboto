@@ -318,7 +318,6 @@ proc newCategory { } {
 
       # Placeholder until I can figure out the 20-hex-digit values.
       dict set cat key [uuid::uuid generate]
-      # Placeholder until I generate random colors.
       dict set cat color [randomColor]
       dict set cat name $category
     }
