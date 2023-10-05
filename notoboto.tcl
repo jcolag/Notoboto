@@ -306,6 +306,8 @@ proc newCategory { } {
   global fg
 
   if {$creating_category} {
+    global folders
+    global map
     global notefile
 
     set creating_category false
