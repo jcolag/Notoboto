@@ -322,6 +322,13 @@ proc newCategory { } {
       dict set cat key [uuid::uuid generate]
       dict set cat color [randomColor]
       dict set cat name $category
+      # Save $category and add to .fr.pnl.choose.topics.topic
+      lappend folders $cat
+      set items [.fr.pnl.choose.topics.topic size]
+      .fr.pnl.choose.topics.topic insert $items [dict get $cat name]
+      .fr.pnl.choose.topics.topic see $items
+      # Save configuration
+      dict set map folders folders
     }
   } else {
     set creating_category true
