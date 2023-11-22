@@ -172,6 +172,12 @@ proc resetTimer {} {
   set ::typing_timer [after 1000 typingTimeout]
 }
 
+proc updateSelectedItem {} {
+  set selected [selection get .fr.pnl.choose.notes.note]
+  set firstLine [.fr.pnl.notearea.text get 1.0 1.0 lineend]
+  .fr.pnl.choose.notes.note itemconfigure $selected -text $firstLine
+}
+
 # Handle the expired typing timer by writing out the updated note.
 proc typingTimeout {} {
   if {$::saving} {
