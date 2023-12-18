@@ -482,6 +482,26 @@ proc hsvToRgb {h s v} {
   return [list $r $g $b]
 }
 
+.fr.pnl.notearea tag configure link -underline true
+
+# Tag links as clickable
+proc detectLinks {widget} {
+  set urlPattern {(http|https|ftp)://[a-zA-Z0-9./?=_&:-]*}
+
+  $widget tag remove link 1.0 end
+
+  set startIndex "1.0"
+  while 1 {
+    set matchStart [$widget search -regexp $urlPattern $startIndex end]
+    if {$matchStart == ""} break
+    set textAfterMatchStart [$widget get $matchStart end]
+    if {[regexp $urlPattern $textAfterMatchStart match]} {
+      set matchEnd [$widget index "$matchStart + [string length $match] chars"]
+      $widget tag add link $matchStart $matchEnd
+    }
+    set startIndex $matchEnd
+  }
+}
 # Transform CSON into a Tcl dictionary
 proc parseCson {cson_string} {
   set cson_data [dict create]
