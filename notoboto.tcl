@@ -481,8 +481,8 @@ proc hsvToRgb {h s v} {
   set b [expr {round($b*255)}]
   return [list $r $g $b]
 }
- 
- # Transform CSON into a Tcl dictionary
+
+# Transform CSON into a Tcl dictionary
 proc parseCson {cson_string} {
   set cson_data [dict create]
   set multiline false
