@@ -161,6 +161,7 @@ bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
   pack .fr.pnl.choose.view -side top -fill x
   pack .fr.pnl.choose.auto -side top -fill x
   pack .fr.pnl.choose.new -side top -fill x
+  detectLinks .fr.pnl.notearea
 }
 
 # Bind a timeout to keystrokes.
