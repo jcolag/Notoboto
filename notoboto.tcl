@@ -485,6 +485,35 @@ proc hsvToRgb {h s v} {
   return [list $r $g $b]
 }
 
+# Open URL in default browser
+proc openLink {widget x y} {
+  set index [$widget index "@$x,$y"]
+  set tagRanges [$widget tag ranges link]
+  foreach {start end} $tagRanges {
+    if {[$widget compare $start <= $index] && [$widget compare $index < $end]} {
+      set url [$widget get $start $end]
+      openUrlInBrowser $url
+      break
+    }
+  }
+}
+
+# Function to open a URL in the default browser
+proc openUrlInBrowser {url} {
+  set os [tk windowingsystem]
+  switch -- $os {
+    "win32" {
+      exec start $url
+    }
+    "aqua" {  # macOS
+      exec open $url
+    }
+    default {  # Assume X11 (Linux, BSD, etc.)
+      exec xdg-open $url
+    }
+  }
+}
+
 .fr.pnl.notearea tag configure link -underline true
 
 # Tag links as clickable
