@@ -124,6 +124,8 @@ wm iconphoto . -default icon48 icon512
 
 # Bind actions to widgets
 bind .fr.pnl.notearea <KeyRelease> {detectLinks .fr.pnl.notearea}
+.fr.pnl.notearea tag bind link <Button-1> {openLink .fr.pnl.notearea %x %y}
+
 foreach {folder} $folders {
   .fr.pnl.choose.topics.topic insert end [dict get $folder "name"]
   .fr.pnl.choose.topics.topic itemconfigure end -foreground [dict get $folder "color"]
