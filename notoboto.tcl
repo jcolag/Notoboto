@@ -536,6 +536,31 @@ proc detectLinks {widget} {
     set startIndex $matchEnd
   }
 }
+# Function to add Markdown syntax highlighting
+proc addMarkdownSyntaxHighlighting {widget} {
+  $widget tag configure header1 -font {TkDefaultFont 24 bold}
+
+  set header1Pattern {^# [^\n]+\n}
+
+  # Function to apply tags based on patterns
+  proc applyTagsForPattern {widget pattern tag} {
+    $widget tag remove $tag 1.0 end
+    set startIndex "1.0"
+    while {$startIndex != "end"} {
+      set matchStart [$widget search -regexp $pattern $startIndex end]
+      if {$matchStart == ""} break
+      set textAfterMatchStart [$widget get $matchStart end]
+      if {[regexp $pattern $textAfterMatchStart match]} {
+        set matchEnd [$widget index "$matchStart + [string length $match] chars"]
+        $widget tag add $tag $matchStart $matchEnd
+      }
+      set startIndex $matchEnd
+    }
+  }
+
+  applyTagsForPattern $widget $header1Pattern header1
+}
+
 # Transform CSON into a Tcl dictionary
 proc parseCson {cson_string} {
   set cson_data [dict create]
