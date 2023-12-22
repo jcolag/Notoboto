@@ -123,6 +123,7 @@ wm geometry . ${width}x${height}+${x}+${y}
 wm iconphoto . -default icon48 icon512
 
 # Bind actions to widgets
+bind .fr.pnl.notearea <KeyRelease> {addMarkdownSyntaxHighlighting .fr.pnl.notearea}
 bind .fr.pnl.notearea <KeyRelease> {detectLinks .fr.pnl.notearea}
 .fr.pnl.notearea tag bind link <Button-1> {openLink .fr.pnl.notearea %x %y}
 
@@ -164,6 +165,7 @@ bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
   pack .fr.pnl.choose.auto -side top -fill x
   pack .fr.pnl.choose.new -side top -fill x
   detectLinks .fr.pnl.notearea
+  addMarkdownSyntaxHighlighting .fr.pnl.notearea 
 }
 
 # Bind a timeout to keystrokes.
