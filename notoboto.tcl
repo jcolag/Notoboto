@@ -538,11 +538,28 @@ proc detectLinks {widget} {
     set startIndex $matchEnd
   }
 }
+
 # Function to add Markdown syntax highlighting
 proc addMarkdownSyntaxHighlighting {widget} {
   $widget tag configure header1 -font {TkDefaultFont 24 bold}
+  $widget tag configure header2 -font {TkDefaultFont 24}
+  $widget tag configure header3 -font {TkDefaultFont 22 bold}
+  $widget tag configure header4 -font {TkDefaultFont 22}
+  $widget tag configure header5 -font {TkDefaultFont 20 bold}
+  $widget tag configure header6 -font {TkDefaultFont 20}
+  $widget tag configure bold -font {TkDefaultFont 18 bold}
+  $widget tag configure italic -font {TkDefaultFont 18 italic}
+  $widget tag configure list -lmargin1 36 -lmargin2 66
 
   set header1Pattern {^# [^\n]+\n}
+  set header2Pattern {^## [^\n]+\n}
+  set header3Pattern {^### [^\n]+\n}
+  set header4Pattern {^#### [^\n]+\n}
+  set header5Pattern {^##### [^\n]+\n}
+  set header6Pattern {^###### [^\n]+\n}
+  set boldPattern {\*\*\w([^*]+)\*\*}
+  set italicPattern {[^*]\*\w([^*]+)\*[^*]}
+  set listPattern {^\s*[\*\-\+]\s+}
 
   # Function to apply tags based on patterns
   proc applyTagsForPattern {widget pattern tag} {
@@ -561,6 +578,14 @@ proc addMarkdownSyntaxHighlighting {widget} {
   }
 
   applyTagsForPattern $widget $header1Pattern header1
+  applyTagsForPattern $widget $header2Pattern header2
+  applyTagsForPattern $widget $header3Pattern header3
+  applyTagsForPattern $widget $header4Pattern header4
+  applyTagsForPattern $widget $header5Pattern header5
+  applyTagsForPattern $widget $header6Pattern header6
+  applyTagsForPattern $widget $boldPattern bold
+  applyTagsForPattern $widget $italicPattern italic
+  applyTagsForPattern $widget $listPattern list
 }
 
 # Transform CSON into a Tcl dictionary
