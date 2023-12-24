@@ -37,6 +37,7 @@ set matches [list]
 set current_note [dict create]
 
 set color_theme [exec gsettings get org.gnome.desktop.interface gtk-theme]
+set fixedFontAttrs [font actual TkFixedFont]
 
 set bg [dict get $config backgroundColor]
 set fg [dict get $config foregroundColor]
@@ -55,10 +56,10 @@ if {[dict exists $config darkBackgroundColor] && [string first dark $color_theme
   set bg [dict get $config darkBackgroundColor]
 }
 
+# [dict get $config "textSize"]
 font create uifont -family TkDefaultFont -size 14
-# [dict get $config "textSize"]
 font create txfont -family TkFixedFont -size 18
-# [dict get $config "textSize"]
+font create customFixedFont {*}$fixedFontAttrs -size 18
 image create photo icon48 -file notoboto-48.png
 image create photo icon512 -file notoboto-512.png
 
