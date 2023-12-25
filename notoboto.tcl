@@ -550,6 +550,8 @@ proc addMarkdownSyntaxHighlighting {widget} {
   $widget tag configure header6 -font {TkDefaultFont 20}
   $widget tag configure bold -font {TkDefaultFont 18 bold}
   $widget tag configure italic -font {TkDefaultFont 18 italic}
+  $widget tag configure code -font customFixedFont
+  $widget tag configure codeblock -font customFixedFont
   $widget tag configure list -lmargin1 36 -lmargin2 66
 
   set header1Pattern {^# [^\n]+\n}
@@ -560,6 +562,8 @@ proc addMarkdownSyntaxHighlighting {widget} {
   set header6Pattern {^###### [^\n]+\n}
   set boldPattern {\*\*\w([^*]+)\*\*}
   set italicPattern {[^*]\*\w([^*]+)\*[^*]}
+  set codePattern {`[^`\n]+`}
+  set codeBlockPattern {(?s)```.*?```}
   set listPattern {^\s*[\*\-\+]\s+}
 
   # Function to apply tags based on patterns
@@ -586,6 +590,8 @@ proc addMarkdownSyntaxHighlighting {widget} {
   applyTagsForPattern $widget $header6Pattern header6
   applyTagsForPattern $widget $boldPattern bold
   applyTagsForPattern $widget $italicPattern italic
+  applyTagsForPattern $widget $codePattern code
+  applyTagsForPattern $widget $codeBlockPattern codeblock
   applyTagsForPattern $widget $listPattern list
 }
 
