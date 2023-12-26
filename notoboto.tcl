@@ -119,6 +119,14 @@ pack .fr.pnl.textscroll -side right -fill y -expand 1
 text .fr.pnl.notearea -background $bg -foreground [dict get $config "textColor"] -font txfont -wrap word -undo true -padx 5 -pady 5 -yscrollcommand ".fr.pnl.textscroll set"
 pack .fr.pnl.notearea -side left -fill y -expand 1
 
+menu .editorContext
+.editorContext add command -label "Undo" -state disabled
+.editorContext add command -label "Redo" -state disabled
+.editorContext add separator
+.editorContext add command -label "Cut" -state disabled
+.editorContext add command -label "Copy" -command { copyText .fr.pnl.notearea }
+.editorContext add command -label "Paste" -command { pasteText .fr.pnl.notearea }
+
 wm title . Notoboto
 wm geometry . ${width}x${height}+${x}+${y}
 wm iconphoto . -default icon48 icon512
