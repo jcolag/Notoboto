@@ -131,14 +131,18 @@ wm title . Notoboto
 wm geometry . ${width}x${height}+${x}+${y}
 wm iconphoto . -default icon48 icon512
 
-# Bind actions to widgets
-bind .fr.pnl.notearea <KeyRelease> {addMarkdownSyntaxHighlighting .fr.pnl.notearea}
-bind .fr.pnl.notearea <KeyRelease> {detectLinks .fr.pnl.notearea}
-.fr.pnl.notearea tag bind link <Button-1> {openLink .fr.pnl.notearea %x %y}
+.fr.pnl.notearea configure -insertbackground [dict get $config "textColor"]
 
 foreach {folder} $folders {
   .fr.pnl.choose.topics.topic insert end [dict get $folder "name"]
   .fr.pnl.choose.topics.topic itemconfigure end -foreground [dict get $folder "color"]
+}
+
+.fr.pnl.notearea tag bind link <Button-1> {openLink .fr.pnl.notearea %x %y}
+
+bind .fr.pnl.notearea <KeyRelease> {
+  addMarkdownSyntaxHighlighting .fr.pnl.notearea
+  detectLinks .fr.pnl.notearea
 }
 
 # Set handler for changing the subject selection.
