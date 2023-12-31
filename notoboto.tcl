@@ -573,7 +573,9 @@ proc addMarkdownSyntaxHighlighting {widget} {
   set header5Pattern {^##### [^\n]+\n}
   set header6Pattern {^###### [^\n]+\n}
   set boldPattern {\*\*\w([^*]+)\*\*}
+  set boldPattern2 {\_\_\w([^_]+)\_\_}
   set italicPattern {[^*]\*\w([^*]+)\*[^*]}
+  set italicPattern2 {[^_]\_\w([^_]+)\_[^_]}
   set codePattern {`[^`\n]+`}
   set codeBlockPattern {(?s)```.*?```}
   set listPattern {^\s*[\*\-\+]\s+}
@@ -601,7 +603,9 @@ proc addMarkdownSyntaxHighlighting {widget} {
   applyTagsForPattern $widget $header5Pattern header5
   applyTagsForPattern $widget $header6Pattern header6
   applyTagsForPattern $widget $boldPattern bold
+  applyTagsForPattern $widget $boldPattern2 bold
   applyTagsForPattern $widget $italicPattern italic
+  applyTagsForPattern $widget $italicPattern2 italic
   applyTagsForPattern $widget $codePattern code
   applyTagsForPattern $widget $codeBlockPattern codeblock
   applyTagsForPattern $widget $listPattern list
