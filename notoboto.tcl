@@ -561,7 +561,9 @@ proc addMarkdownSyntaxHighlighting {widget} {
   $widget tag configure header5 -font {TkDefaultFont 20 bold}
   $widget tag configure header6 -font {TkDefaultFont 20}
   $widget tag configure bold -font {TkDefaultFont 18 bold}
+  $widget tag configure bold2 -font {TkDefaultFont 18 bold}
   $widget tag configure italic -font {TkDefaultFont 18 italic}
+  $widget tag configure italic2 -font {TkDefaultFont 18 italic}
   $widget tag configure code -font customFixedFont
   $widget tag configure codeblock -font customFixedFont
   $widget tag configure list -lmargin1 36 -lmargin2 66
@@ -572,10 +574,10 @@ proc addMarkdownSyntaxHighlighting {widget} {
   set header4Pattern {^#### [^\n]+\n}
   set header5Pattern {^##### [^\n]+\n}
   set header6Pattern {^###### [^\n]+\n}
-  set boldPattern {\*\*\w([^*]+)\*\*}
-  set boldPattern2 {\_\_\w([^_]+)\_\_}
-  set italicPattern {[^*]\*\w([^*]+)\*[^*]}
-  set italicPattern2 {[^_]\_\w([^_]+)\_[^_]}
+  set boldPattern {\*\*\w([^*\n]*)\*\*}
+  set boldPattern2 {__\w([^_\n]*)__}
+  set italicPattern {\*\w([^*]+)\*(?!\*)}
+  set italicPattern2 {_\w([^_]+)_(?!_)}
   set codePattern {`[^`\n]+`}
   set codeBlockPattern {(?s)```.*?```}
   set listPattern {^\s*[\*\-\+]\s+}
@@ -603,9 +605,9 @@ proc addMarkdownSyntaxHighlighting {widget} {
   applyTagsForPattern $widget $header5Pattern header5
   applyTagsForPattern $widget $header6Pattern header6
   applyTagsForPattern $widget $boldPattern bold
-  applyTagsForPattern $widget $boldPattern2 bold
+  applyTagsForPattern $widget $boldPattern2 bold2
   applyTagsForPattern $widget $italicPattern italic
-  applyTagsForPattern $widget $italicPattern2 italic
+  applyTagsForPattern $widget $italicPattern2 italic2
   applyTagsForPattern $widget $codePattern code
   applyTagsForPattern $widget $codeBlockPattern codeblock
   applyTagsForPattern $widget $listPattern list
