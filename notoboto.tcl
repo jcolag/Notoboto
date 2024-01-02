@@ -431,6 +431,15 @@ proc openNote { idx } {
   return $idx
 }
 
+# Procedure to copy selected text from a text widget to the clipboard
+proc copyText {widget} {
+  if {[$widget tag ranges sel] != ""} {
+    set selectedText [$widget get sel.first sel.last]
+    clipboard clear
+    clipboard append $selectedText
+  }
+}
+
 # Compare dates for sorting.
 proc recency { a b } {
   set date1 [dict get $a updatedAt]
