@@ -440,6 +440,12 @@ proc copyText {widget} {
   }
 }
 
+# Procedure to paste text from the clipboard into the text widget at the cursor position
+proc pasteText {widget} {
+  set clipboardText [clipboard get]
+  $widget insert insert $clipboardText
+}
+
 # Compare dates for sorting.
 proc recency { a b } {
   set date1 [dict get $a updatedAt]
