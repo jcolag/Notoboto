@@ -140,6 +140,24 @@ foreach {folder} $folders {
 
 .fr.pnl.notearea tag bind link <Button-1> {openLink .fr.pnl.notearea %x %y}
 
+bind .fr.pnl.notearea <Button-3> {
+  .editorContext post %X %Y
+
+  # Check clipboard contents
+  if {[catch {clipboard get} clipboardContent]} {
+    .editorContext entryconfigure "Paste" -state disabled
+  } else {
+    .editorContext entryconfigure "Paste" -state normal
+  }
+
+  # Check current text selection
+  if {[expr {[.fr.pnl.notearea tag ranges sel] == ""}]} {
+    .editorContext entryconfigure "Copy" -state disabled
+  } else {
+    .editorContext entryconfigure "Copy" -state normal
+  }
+}
+
 bind .fr.pnl.notearea <KeyRelease> {
   addMarkdownSyntaxHighlighting .fr.pnl.notearea
   detectLinks .fr.pnl.notearea
