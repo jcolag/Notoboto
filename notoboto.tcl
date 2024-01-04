@@ -254,6 +254,7 @@ proc typingTimeout {} {
   puts $fp $cson
   close $fp
   set $::saving false
+  .fr.pnl.notearea edit modified 0
 
   if {$update_preview} {
     previewNote false
