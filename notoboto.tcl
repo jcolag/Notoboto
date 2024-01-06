@@ -192,6 +192,7 @@ bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
 
   .fr.pnl.notearea delete 0.0 end
   .fr.pnl.notearea insert 0.0 [dict get $current_note content]
+  .fr.pnl.notearea edit reset
   .fr.pnl.notearea edit modified 0
   pack .fr.pnl.choose.view -side top -fill x
   pack .fr.pnl.choose.auto -side top -fill x
