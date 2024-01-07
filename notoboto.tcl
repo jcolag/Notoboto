@@ -225,6 +225,11 @@ proc typingTimeout {} {
     return
   }
 
+  if {![.fr.pnl.notearea edit modified]} {
+    # Nothing to save
+    return
+  }
+
   after cancel $::typing_timer
 
   global current_note
