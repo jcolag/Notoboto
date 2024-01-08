@@ -119,7 +119,7 @@ pack .fr.pnl.textscroll -side right -fill y -expand 1
 text .fr.pnl.notearea -background $bg -foreground [dict get $config "textColor"] -font txfont -wrap word -undo true -padx 5 -pady 5 -yscrollcommand ".fr.pnl.textscroll set"
 pack .fr.pnl.notearea -side left -fill y -expand 1
 
-menu .editorContext
+menu .editorContext -background $bg -foreground $fg -font uifont
 .editorContext add command -label "Undo" -state disabled
 .editorContext add command -label "Redo" -state disabled
 .editorContext add separator
