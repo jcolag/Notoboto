@@ -206,6 +206,35 @@ bind .fr.pnl.notearea <Key> {
   after idle resetTimer
 }
 
+# Open a window to search main text.
+proc createSearchWindow {} {
+  global bg
+  global fg
+
+  toplevel .searchWin
+  wm title .searchWin "Search/Replace"
+  wm geometry .searchWin +0-100
+  wm transient .searchWin .fr
+  wm attributes .searchWin -topmost 1
+
+  frame .searchWin.fr -background $bg
+  pack .searchWin.fr -fill both -expand 1
+
+  label .searchWin.fr.lblSearch -text "Search:" -background $bg -foreground $fg -font uifont
+  entry .searchWin.fr.entSearch -background $bg -foreground $fg -font uifont
+  pack .searchWin.fr.lblSearch .searchWin.fr.entSearch -side top -fill x
+
+  label .searchWin.fr.lblReplace -text "Replace:" -background $bg -foreground $fg -font uifont
+  entry .searchWin.fr.entReplace -background $bg -foreground $fg -font uifont
+  pack .searchWin.fr.lblReplace .searchWin.fr.entReplace -side top -fill x
+
+  button .searchWin.fr.btnSearch -text "Search" -command {searchText .fr.pnl.notearea [.searchWin.fr.entSearch get]} -background $bg -foreground $fg -font uifont
+  button .searchWin.fr.btnReplace -text "Replace" -command {replaceText [.searchWin.fr.entSearch get] [.searchWin.fr.entReplace get]} -background $bg -foreground $fg -font uifont
+  pack .searchWin.fr.btnSearch .searchWin.fr.btnReplace -side top
+
+  focus .searchWin.fr.entSearch
+}
+
 # Reset the timer.
 proc resetTimer {} {
   after cancel $::typing_timer
