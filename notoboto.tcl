@@ -638,7 +638,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   $widget tag configure italic2 -font {TkDefaultFont 18 italic}
   $widget tag configure code -font customFixedFont
   $widget tag configure codeblock -font customFixedFont
-  $widget tag configure list -lmargin1 36 -lmargin2 66
+  $widget tag configure listitem -lmargin1 1c -lmargin2 1.5c
 
   set header1Pattern {^# [^\n]+\n}
   set header2Pattern {^## [^\n]+\n}
@@ -652,7 +652,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   set italicPattern2 {_\w([^_]+)_(?!_)}
   set codePattern {`[^`\n]+`}
   set codeBlockPattern {(?s)```.*?```}
-  set listPattern {^\s*[\*\-\+]\s+}
+  set listPattern {^\s*[\*\-\+]\s+[^\n]*}
 
   # Function to apply tags based on patterns
   proc applyTagsForPattern {widget pattern tag} {
@@ -682,7 +682,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   applyTagsForPattern $widget $italicPattern2 italic2
   applyTagsForPattern $widget $codePattern code
   applyTagsForPattern $widget $codeBlockPattern codeblock
-  applyTagsForPattern $widget $listPattern list
+  applyTagsForPattern $widget $listPattern listitem
 }
 
 # Transform CSON into a Tcl dictionary
