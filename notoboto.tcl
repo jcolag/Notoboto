@@ -626,7 +626,7 @@ proc detectLinks {widget} {
 
 # Function to add Markdown syntax highlighting
 proc addMarkdownSyntaxHighlighting {widget} {
-  $widget tag configure header1 -font {TkDefaultFont 24 bold}
+  $widget tag configure header1 -font {TkDefaultFont 24 bold} -lmargin2 1c
   $widget tag configure header2 -font {TkDefaultFont 24}
   $widget tag configure header3 -font {TkDefaultFont 22 bold}
   $widget tag configure header4 -font {TkDefaultFont 22}
