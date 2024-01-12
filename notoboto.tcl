@@ -161,6 +161,11 @@ bind .fr.pnl.notearea <Button-3> {
 bind . <Control-f> {createSearchWindow}
 
 bind .fr.pnl.notearea <KeyRelease> {
+  if {![.fr.pnl.notearea edit modified]} {
+    # Nothing to do
+    return
+  }
+
   addMarkdownSyntaxHighlighting .fr.pnl.notearea
   detectLinks .fr.pnl.notearea
 }
