@@ -36,6 +36,8 @@ set folders [lsort -index 5 $folders_unsorted]
 set matches [list]
 set current_note [dict create]
 
+set nextSearchStart "1.0"
+
 set color_theme [exec gsettings get org.gnome.desktop.interface gtk-theme]
 set fixedFontAttrs [font actual TkFixedFont]
 
