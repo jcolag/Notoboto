@@ -495,6 +495,25 @@ proc openNote { idx } {
   return $idx
 }
 
+# Perform a search of the current note.
+proc searchText {widget searchTerm} {
+  global nextSearchStart
+
+  $widget tag remove sel 1.0 end
+
+  set matchIndex [$widget search -count lengthVar -- $searchTerm $nextSearchStart end]
+
+  if {$matchIndex != ""} {
+      $widget tag add sel $matchIndex "$matchIndex + $lengthVar chars"
+      $widget see $matchIndex
+      set nextSearchStart "$matchIndex + $lengthVar chars"
+      $widget mark set insert $matchIndex
+      focus $widget
+  } else {
+      set nextSearchStart "1.0"
+  }
+}
+
 # Procedure to copy selected text from a text widget to the clipboard
 proc copyText {widget} {
   if {[$widget tag ranges sel] != ""} {
