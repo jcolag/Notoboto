@@ -162,6 +162,12 @@ bind .fr.pnl.notearea <Button-3> {
 
 bind . <Control-f> {createSearchWindow}
 
+bind .fr.pnl.notearea <KeyPress> {
+    global nextSearchStart
+    .fr.pnl.notearea tag remove sel 1.0 end
+    set nextSearchStart [.fr.pnl.notearea index insert]
+}
+
 bind .fr.pnl.notearea <KeyRelease> {
   if {![.fr.pnl.notearea edit modified]} {
     # Nothing to do
