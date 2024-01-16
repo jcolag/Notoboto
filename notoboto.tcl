@@ -510,7 +510,12 @@ proc openNote { idx } {
 # Perform a search of the current note.
 proc searchText {widget searchTerm} {
   global nextSearchStart
+  set startIndex ""
 
+  # Anything selected?
+  if {[$widget tag ranges sel] != {}} {
+    set startIndex [$widget index {sel.last + 1 char}]
+  }
   $widget tag remove sel 1.0 end
 
   set matchIndex [$widget search -count lengthVar -- $searchTerm $nextSearchStart end]
