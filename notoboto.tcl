@@ -226,6 +226,12 @@ proc createSearchWindow {} {
   global bg
   global fg
 
+  if {[winfo exists .searchWin]} {
+    raise .searchWin
+    focus .searchWin.fr.entSearch
+    return
+  }
+
   toplevel .searchWin
   wm title .searchWin "Search/Replace"
   wm geometry .searchWin +0-100
