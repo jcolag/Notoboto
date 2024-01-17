@@ -516,6 +516,17 @@ proc searchText {widget searchTerm} {
   if {[$widget tag ranges sel] != {}} {
     set startIndex [$widget index {sel.last + 1 char}]
   }
+
+  # Check the caret.
+  if {$startIndex eq ""} {
+    set startIndex [$widget index insert]
+  }
+
+  # No caret.
+  if {$startIndex eq [$widget index {end - 1 char}]} {
+    set startIndex "1.0"
+  }
+
   $widget tag remove sel 1.0 end
 
   set matchIndex [$widget search -count lengthVar -- $searchTerm $nextSearchStart end]
