@@ -532,13 +532,12 @@ proc searchText {widget searchTerm} {
   set matchIndex [$widget search -count lengthVar -- $searchTerm $startIndex end]
 
   if {$matchIndex != ""} {
-      $widget tag add sel $matchIndex "$matchIndex + $lengthVar chars"
-      $widget see $matchIndex
-      set nextSearchStart "$matchIndex + $lengthVar chars"
-      $widget mark set insert $matchIndex
-      focus $widget
   } else {
       set nextSearchStart "1.0"
+    $widget tag add sel $matchIndex "$matchIndex + $lengthVar chars"
+    $widget see $matchIndex
+    $widget mark set insert $matchIndex
+    focus $widget
   }
 }
 
