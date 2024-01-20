@@ -509,7 +509,6 @@ proc openNote { idx } {
 
 # Perform a search of the current note.
 proc searchText {widget searchTerm} {
-  global nextSearchStart
   set startIndex ""
 
   # Anything selected?
