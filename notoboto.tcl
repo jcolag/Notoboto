@@ -687,6 +687,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   $widget tag configure italic -font {TkDefaultFont 18 italic}
   $widget tag configure italic2 -font {TkDefaultFont 18 italic}
   $widget tag configure code -font customFixedFont
+  $widget tag configure strike -font {TkDefaultFont 18 overstrike}
   $widget tag configure codeblock -font customFixedFont
   $widget tag configure listitem -lmargin1 1c -lmargin2 1.5c
   $widget tag configure quote -lmargin1 1c -lmargin2 1.5c -rmargin 1c
@@ -702,6 +703,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   set italicPattern {\*\w([^*]+)\*(?!\*)}
   set italicPattern2 {_\w([^_]+)_(?!_)}
   set codePattern {`[^`\n]+`}
+  set strikePattern {~~\w([^~]+)~~}
   set codeBlockPattern {(?s)```.*?```}
   set listPattern {^\s*[\*\-\+]\s+[^\n]*}
   set quotePattern {^\s*>\s+[^\n]*}
@@ -733,6 +735,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   applyTagsForPattern $widget $italicPattern italic
   applyTagsForPattern $widget $italicPattern2 italic2
   applyTagsForPattern $widget $codePattern code
+  applyTagsForPattern $widget $strikePattern strike
   applyTagsForPattern $widget $codeBlockPattern codeblock
   applyTagsForPattern $widget $listPattern listitem
   applyTagsForPattern $widget $quotePattern quote
