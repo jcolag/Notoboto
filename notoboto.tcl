@@ -37,6 +37,9 @@ set matches [list]
 set current_note [dict create]
 
 set nextSearchStart "1.0"
+set caseSearch true
+set wordSearch false
+set regexSearch false
 
 set color_theme [exec gsettings get org.gnome.desktop.interface gtk-theme]
 set fixedFontAttrs [font actual TkFixedFont]
