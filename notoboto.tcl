@@ -510,7 +510,12 @@ proc openNote { idx } {
 
 # Perform a search of the current note.
 proc searchText {widget searchTerm} {
+  global caseSearch
+  global wordSearch
+  global regexSearch
   set startIndex ""
+  set searchPattern ""
+  set searchOptions {}
 
   # Anything selected?
   if {[$widget tag ranges sel] != {}} {
