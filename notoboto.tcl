@@ -534,7 +534,7 @@ proc searchText {widget searchTerm} {
 
   $widget tag remove sel 1.0 end
 
-  set matchIndex [$widget search -count lengthVar -- $searchTerm $startIndex end]
+  set matchIndex [$widget search -count lengthVar {*}$searchOptions -- $searchPattern $startIndex end]
 
   if {$matchIndex != ""} {
     $widget tag add sel $matchIndex "$matchIndex + $lengthVar chars"
