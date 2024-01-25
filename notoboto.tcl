@@ -517,6 +517,10 @@ proc searchText {widget searchTerm} {
   set searchPattern ""
   set searchOptions {}
 
+  if {!$caseSearch} {
+    lappend searchOptions -nocase
+  }
+
   # Anything selected?
   if {[$widget tag ranges sel] != {}} {
     set startIndex [$widget index {sel.last + 1 char}]
