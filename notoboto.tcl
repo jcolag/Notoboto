@@ -521,6 +521,10 @@ proc searchText {widget searchTerm} {
     lappend searchOptions -nocase
   }
 
+  if {$regexSearch} {
+    lappend searchOptions -regexp
+  }
+
   # Anything selected?
   if {[$widget tag ranges sel] != {}} {
     set startIndex [$widget index {sel.last + 1 char}]
