@@ -517,6 +517,16 @@ proc searchText {widget searchTerm} {
   set searchPattern ""
   set searchOptions {}
 
+  if {$regexSearch} {
+    set searchPattern $searchTerm
+  } else {
+    if {$wordSearch} {
+      set searchPattern "\\y$searchTerm\\y"
+    } else {
+      set searchPattern $searchTerm
+    }
+  }
+
   if {!$caseSearch} {
     lappend searchOptions -nocase
   }
