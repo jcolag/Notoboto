@@ -37,7 +37,7 @@ set matches [list]
 set current_note [dict create]
 
 set nextSearchStart "1.0"
-set caseSearch true
+set caseSearch false
 set wordSearch false
 set regexSearch false
 
