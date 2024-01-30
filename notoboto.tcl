@@ -169,16 +169,6 @@ bind .fr.pnl.notearea <KeyPress> {
   .fr.pnl.notearea tag remove sel 1.0 end
 }
 
-bind .fr.pnl.notearea <KeyRelease> {
-  if {![.fr.pnl.notearea edit modified]} {
-    # Nothing to do
-    return
-  }
-
-  addMarkdownSyntaxHighlighting .fr.pnl.notearea
-  detectLinks .fr.pnl.notearea
-}
-
 # Set handler for changing the subject selection.
 bind .fr.pnl.choose.topics.topic <<ListboxSelect>> {
   set idx [%W curselection]
@@ -269,8 +259,17 @@ proc updateSelectedItem {} {
   .fr.pnl.choose.notes.note itemconfigure $selected -text $firstLine
 }
 
-# Handle the expired typing timer by writing out the updated note.
+# Handle the expired typing timer by updating the note display and file.
 proc typingTimeout {} {
+  if {![.fr.pnl.notearea edit modified]} {
+    # Nothing to do, if nothing changed.
+    return
+  }
+
+  # Update syntax highlighting.
+  addMarkdownSyntaxHighlighting .fr.pnl.notearea
+  detectLinks .fr.pnl.notearea
+
   if {$::saving} {
     # Don't interfere with an existing action.
     return
