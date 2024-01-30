@@ -561,6 +561,12 @@ proc searchText {widget searchTerm} {
   }
 }
 
+# Replace text in the current note.
+proc replaceText {searchTerm replaceTerm} {
+  puts "Replacing '$searchTerm' with '$replaceTerm'"
+  # Add replace functionality here
+}
+
 # Procedure to copy selected text from a text widget to the clipboard
 proc copyText {widget} {
   if {[$widget tag ranges sel] != ""} {
