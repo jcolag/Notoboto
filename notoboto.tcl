@@ -164,6 +164,21 @@ bind .fr.pnl.notearea <Button-3> {
 }
 
 bind . <Control-f> {createSearchWindow}
+bind . <Control-g> {
+  if {![winfo exists .searchWin]} {
+    createSearchWindow
+    return
+  }
+
+  set searchTerm [.searchWin.fr.entSearch get]
+
+  if {$searchTerm == ""} {
+    createSearchWindow
+    return
+  }
+
+  searchText .fr.pnl.notearea $searchTerm
+}
 
 bind .fr.pnl.notearea <KeyPress> {
   .fr.pnl.notearea tag remove sel 1.0 end
