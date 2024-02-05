@@ -240,7 +240,7 @@ proc createSearchWindow {} {
 
   toplevel .searchWin
   wm title .searchWin "Search/Replace"
-  wm geometry .searchWin +0-100
+  wm geometry .searchWin +0-0
   wm transient .searchWin .fr
   wm attributes .searchWin -topmost 1
 
