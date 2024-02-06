@@ -231,6 +231,9 @@ bind .fr.pnl.notearea <Key> {
 proc createSearchWindow {} {
   global bg
   global fg
+  global caseSearch
+  global wordSearch
+  global regexSearch
 
   if {[winfo exists .searchWin]} {
     raise .searchWin
@@ -254,6 +257,13 @@ proc createSearchWindow {} {
   label .searchWin.fr.lblReplace -text "Replace:" -background $bg -foreground $fg -font uifont
   entry .searchWin.fr.entReplace -background $bg -foreground $fg -font uifont
   pack .searchWin.fr.lblReplace .searchWin.fr.entReplace -side top -fill x
+
+  frame .searchWin.fr.options -background $bg
+  checkbutton .searchWin.fr.options.ocase -background $bg -foreground $fg -font uifont -text "aA" -variable caseSearch
+  checkbutton .searchWin.fr.options.oword -background $bg -foreground $fg -font uifont -text "|W|" -variable wordSearch
+  checkbutton .searchWin.fr.options.oregex -background $bg -foreground $fg -font uifont -text ".*" -variable regexSearch
+  pack .searchWin.fr.options
+  pack .searchWin.fr.options.ocase .searchWin.fr.options.oword .searchWin.fr.options.oregex -in .searchWin.fr.options -side left
 
   button .searchWin.fr.btnSearch -text "Search" -command {searchText .fr.pnl.notearea [.searchWin.fr.entSearch get]} -background $bg -foreground $fg -font uifont
   button .searchWin.fr.btnReplace -text "Replace" -command {replaceText [.searchWin.fr.entSearch get] [.searchWin.fr.entReplace get]} -background $bg -foreground $fg -font uifont
