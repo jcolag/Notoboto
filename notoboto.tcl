@@ -545,7 +545,7 @@ proc searchText {widget searchTerm} {
     set searchPattern $searchTerm
   } else {
     if {$wordSearch} {
-      set searchPattern "\\y$searchTerm\\y"
+      set searchPattern "\\m$searchTerm\\M"
     } else {
       set searchPattern $searchTerm
     }
@@ -553,6 +553,7 @@ proc searchText {widget searchTerm} {
 
   if {!$caseSearch} {
     lappend searchOptions -nocase
+    lappend searchOptions -regexp
   }
 
   if {$regexSearch} {
