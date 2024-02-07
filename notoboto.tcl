@@ -545,6 +545,22 @@ proc searchText {widget searchTerm} {
     set searchPattern $searchTerm
   } else {
     if {$wordSearch} {
+      if {!$regexSearch} {
+        # Escape command characters.
+        array set x {\\ \\\\}
+        set escape {{$^.?+*\|()[]}}
+
+        foreach c [split $escape {}] {
+          set x($c) \\$c
+        }
+
+        ::regsub -all {[{$\^.?+*\\|()\[\]}]} $searchTerm {\\&} searchTerm
+
+        # Without any regular expression, use a regular expression search.
+        lappend searchOptions -regexp
+      }
+
+      # Add (regular expression) word boundaries.
       set searchPattern "\\m$searchTerm\\M"
     } else {
       set searchPattern $searchTerm
@@ -553,7 +569,6 @@ proc searchText {widget searchTerm} {
 
   if {!$caseSearch} {
     lappend searchOptions -nocase
-    lappend searchOptions -regexp
   }
 
   if {$regexSearch} {
