@@ -197,7 +197,6 @@ bind .fr.pnl.choose.topics.topic <<ListboxSelect>> {
   pack .fr.pnl.choose.notes -side top
   pack forget .fr.pnl.choose.view
   pack forget .fr.pnl.choose.auto
-  pack forget .fr.pnl.choose.new
   pack forget .fr.pnl.choose.reload
 }
 
@@ -217,7 +216,6 @@ bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
   .fr.pnl.notearea edit modified 0
   pack .fr.pnl.choose.view -side top -fill x
   pack .fr.pnl.choose.auto -side top -fill x
-  pack .fr.pnl.choose.new -side top -fill x
   detectLinks .fr.pnl.notearea
   addMarkdownSyntaxHighlighting .fr.pnl.notearea 
 }
