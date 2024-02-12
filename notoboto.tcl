@@ -545,14 +545,6 @@ proc searchText {widget searchTerm} {
   } else {
     if {$wordSearch} {
       if {!$regexSearch} {
-        # Escape command characters.
-        array set x {\\ \\\\}
-        set escape {{$^.?+*\|()[]}}
-
-        foreach c [split $escape {}] {
-          set x($c) \\$c
-        }
-
         ::regsub -all {[{$\^.?+*\\|()\[\]}]} $searchTerm {\\&} searchTerm
 
         # Without any regular expression, use a regular expression search.
