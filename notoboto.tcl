@@ -196,6 +196,7 @@ bind .fr.pnl.choose.topics.topic <<ListboxSelect>> {
   }
 
   pack .fr.pnl.choose.notes -side top
+  pack .fr.pnl.choose.new -side top -fill x
   pack forget .fr.pnl.choose.view
   pack forget .fr.pnl.choose.auto
   pack forget .fr.pnl.choose.reload
