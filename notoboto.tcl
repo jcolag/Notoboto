@@ -514,6 +514,12 @@ proc openFolder { idx folders root getNote matches } {
       set title [dict get $obj title]
       set title [string trim $title '"']
 
+      if {![dict exists $obj key]} {
+        set parts [split $file "/"]
+        set plen [llength $parts]
+        dict set $obj key [lindex $parts [expr $plen - 1]]
+      }
+
       if {![dict get $obj isTrashed]} {
         # Add the title to the note list if the note hasn't been
         # deleted and it's part of the folder.
