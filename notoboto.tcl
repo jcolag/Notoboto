@@ -310,8 +310,13 @@ proc typingTimeout {} {
   global current_note
   global update_preview
   set $::saving true
+  set stats [dict create]
   set filename [dict get $current_note key]
-  set stats [dict get $current_note stats]
+
+  if {[dict exists $current_note stats]} {
+    set stats [dict get $current_note stats]
+  }
+
   set now [clock seconds]
 
   # Update content
