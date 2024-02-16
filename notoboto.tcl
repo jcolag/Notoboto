@@ -247,6 +247,10 @@ proc createSearchWindow {} {
   wm transient .searchWin .fr
   wm attributes .searchWin -topmost 1
 
+  image create photo regex -file regular-expression-material.png
+  image create photo mcase -file match-case-material.png
+  image create photo mword -file match-word-material.png
+
   frame .searchWin.fr -background $bg
   pack .searchWin.fr -fill both -expand 1
 
@@ -259,9 +263,9 @@ proc createSearchWindow {} {
   pack .searchWin.fr.lblReplace .searchWin.fr.entReplace -side top -fill x
 
   frame .searchWin.fr.options -background $bg
-  checkbutton .searchWin.fr.options.ocase -background $bg -foreground $fg -font uifont -text "aA" -variable caseSearch
-  checkbutton .searchWin.fr.options.oword -background $bg -foreground $fg -font uifont -text "|W|" -variable wordSearch
-  checkbutton .searchWin.fr.options.oregex -background $bg -foreground $fg -font uifont -text ".*" -variable regexSearch
+  checkbutton .searchWin.fr.options.ocase -image mcase -variable caseSearch
+  checkbutton .searchWin.fr.options.oword -image mword -variable wordSearch
+  checkbutton .searchWin.fr.options.oregex -image regex -variable regexSearch
   pack .searchWin.fr.options
   pack .searchWin.fr.options.ocase .searchWin.fr.options.oword .searchWin.fr.options.oregex -in .searchWin.fr.options -side left
 
