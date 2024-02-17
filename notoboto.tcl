@@ -258,16 +258,16 @@ proc createSearchWindow {} {
   entry .searchWin.fr.entSearch -background $bg -foreground $fg -font uifont
   pack .searchWin.fr.lblSearch .searchWin.fr.entSearch -side top -fill x
 
-  label .searchWin.fr.lblReplace -text "Replace:" -background $bg -foreground $fg -font uifont
-  entry .searchWin.fr.entReplace -background $bg -foreground $fg -font uifont
-  pack .searchWin.fr.lblReplace .searchWin.fr.entReplace -side top -fill x
-
   frame .searchWin.fr.options -background $bg
   checkbutton .searchWin.fr.options.ocase -image mcase -variable caseSearch
   checkbutton .searchWin.fr.options.oword -image mword -variable wordSearch
   checkbutton .searchWin.fr.options.oregex -image regex -variable regexSearch
   pack .searchWin.fr.options
   pack .searchWin.fr.options.ocase .searchWin.fr.options.oword .searchWin.fr.options.oregex -in .searchWin.fr.options -side left
+
+  label .searchWin.fr.lblReplace -text "Replace:" -background $bg -foreground $fg -font uifont
+  entry .searchWin.fr.entReplace -background $bg -foreground $fg -font uifont
+  pack .searchWin.fr.lblReplace .searchWin.fr.entReplace -side top -fill x
 
   button .searchWin.fr.btnSearch -text "Search" -command {searchText .fr.pnl.notearea [.searchWin.fr.entSearch get]} -background $bg -foreground $fg -font uifont
   button .searchWin.fr.btnReplace -text "Replace" -command {replaceText [.searchWin.fr.entSearch get] [.searchWin.fr.entReplace get]} -background $bg -foreground $fg -font uifont
