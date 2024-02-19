@@ -26,7 +26,12 @@ And I intended the application icon to look like a stylized version of the boto 
 
 You'll need Tcl/Tk on your system to run this, until I can figure out the current approach to bundling applications.  And at least on Ubuntu, you'll need to install `libtk-img` unless you change the icon to something "native" to Tk.
 
+You'll also need `tcl-markdown`, `tclx`, and `tcllib`.
+
 After that, run the script, and I'll try to keep it working as much like **Miniboost** as I can, with notes auto-saving when you stop typing and making themselves available on a least-recently-used basis.
 
 Over time, I might add features, because Tk's `text` widget can apparently support searching, formatting, and many other features that Proton Native couldn't and even on Electron would've required work.  I would also like to migrate the notes away from CSON, at some point, so that I don't need to rely on my shaky custom code.
 
+## Other Licenses
+
+Other than the application all icons come from [Material Symbols](https://fonts.google.com/icons), made available under the terms of the [Apache License, version 2.0](https://www.apache.org/licenses/LICENSE-2.0.html).
