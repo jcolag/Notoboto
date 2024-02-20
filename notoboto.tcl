@@ -254,9 +254,8 @@ proc createSearchWindow {} {
   frame .searchWin.fr -background $bg
   pack .searchWin.fr -fill both -expand 1
 
-  label .searchWin.fr.lblSearch -text "Search:" -background $bg -foreground $fg -font uifont
   entry .searchWin.fr.entSearch -background $bg -foreground $fg -font uifont
-  pack .searchWin.fr.lblSearch .searchWin.fr.entSearch -side top -fill x
+  pack .searchWin.fr.entSearch -side top -fill x
 
   frame .searchWin.fr.options -background $bg
   checkbutton .searchWin.fr.options.ocase -image mcase -variable caseSearch
@@ -266,9 +265,8 @@ proc createSearchWindow {} {
   pack .searchWin.fr.options
   pack .searchWin.fr.options.ocase .searchWin.fr.options.oword .searchWin.fr.options.oregex .searchWin.fr.options.btnSearch -in .searchWin.fr.options -side left
 
-  label .searchWin.fr.lblReplace -text "Replace:" -background $bg -foreground $fg -font uifont
   entry .searchWin.fr.entReplace -background $bg -foreground $fg -font uifont
-  pack .searchWin.fr.lblReplace .searchWin.fr.entReplace -side top -fill x
+  pack .searchWin.fr.entReplace -side top -fill x
 
   button .searchWin.fr.btnReplace -text "Replace" -command {replaceText [.searchWin.fr.entSearch get] [.searchWin.fr.entReplace get]} -background $bg -foreground $fg -font uifont
   pack .searchWin.fr.btnReplace -side top
