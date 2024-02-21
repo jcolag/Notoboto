@@ -67,6 +67,12 @@ font create txfont -family TkFixedFont -size 18
 font create customFixedFont {*}$fixedFontAttrs -size 18
 image create photo icon48 -file notoboto-48.png
 image create photo icon512 -file notoboto-512.png
+image create photo newcat -file library-add-material.png
+image create photo newnote -file note-add-material.png
+image create photo browse -file open-in-browser-material.png
+image create photo reload -file sync-material.png
+image create photo yprev -file check-circle-material.png
+image create photo nprev -file cancel-material.png
 
 frame .fr -background $bg
 pack .fr -fill both -expand 1
@@ -97,7 +103,7 @@ pack .fr.pnl.choose.topics.topic -side left
 frame .fr.pnl.choose.category -background $bg
 pack .fr.pnl.choose.category -side top
 
-button .fr.pnl.choose.category.addtopic -text "New Category ➕" -background $bg -foreground $fg -font uifont -command newCategory
+button .fr.pnl.choose.category.addtopic -text "New Category" -image newcat -compound right -background $bg -foreground $fg -font uifont -command newCategory
 pack .fr.pnl.choose.category.addtopic -side left -fill y
 
 entry .fr.pnl.choose.category.catname -background $bg -foreground $fg -font uifont
@@ -110,13 +116,13 @@ pack .fr.pnl.choose.notes.notescroll -side right -fill y -expand 1
 listbox .fr.pnl.choose.notes.note -background $bg -foreground $fg -font uifont -yscrollcommand ".fr.pnl.choose.notes.notescroll set" -exportselection false
 pack .fr.pnl.choose.notes.note -side top -expand 1 -fill y
 
-button .fr.pnl.choose.view -text "View in Browser 🌐" -background $bg -foreground $fg -font uifont -command previewNote
+button .fr.pnl.choose.view -text "View in Browser" -image browse -compound right -background $bg -foreground $fg -font uifont -command previewNote
 
-button .fr.pnl.choose.auto -text "Auto-Preview ❌" -background $bg -foreground $fg -font uifont -command autoUpdate
+button .fr.pnl.choose.auto -text "Auto-Preview" -image nprev -compound right -background $bg -foreground $fg -font uifont -command autoUpdate
 
-button .fr.pnl.choose.new -text "New Note ➕" -background $bg -foreground $fg -font uifont -command newNote
+button .fr.pnl.choose.new -text "New Note" -image newnote -compound right -background $bg -foreground $fg -font uifont -command newNote
 
-button .fr.pnl.choose.reload -text "Reload File 🔃" -background $bg -foreground $fg -font uifont -command reloadNote
+button .fr.pnl.choose.reload -text "Reload File" -image reload -compound right -background $bg -foreground $fg -font uifont -command reloadNote
 
 scrollbar .fr.pnl.textscroll -orient vertical -background $bg -command ".fr.pnl.notearea yview"
 pack .fr.pnl.textscroll -side right -fill y -expand 1
@@ -485,10 +491,10 @@ proc autoUpdate {} {
 
   if {$update_preview} {
     set update_preview false
-    .fr.pnl.choose.auto configure -text "Auto-Preview ❌" -background $bg -foreground $fg -font uifont
+    .fr.pnl.choose.auto configure -text "Auto-Preview" -image nprev -compound right -background $bg -foreground $fg -font uifont
   } else {
     set update_preview true
-    .fr.pnl.choose.auto configure -text "Auto-Preview ✅" -background $bg -foreground $fg -font uifont
+    .fr.pnl.choose.auto configure -text "Auto-Preview" -image yprev -compound right -background $bg -foreground $fg -font uifont
   }
 }
 
