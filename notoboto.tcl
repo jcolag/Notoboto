@@ -73,6 +73,7 @@ image create photo browse -file open-in-browser-material.png
 image create photo reload -file sync-material.png
 image create photo yprev -file check-circle-material.png
 image create photo nprev -file cancel-material.png
+image create photo logout -file logout-material.png
 
 frame .fr -background $bg
 pack .fr -fill both -expand 1
@@ -89,7 +90,7 @@ menu .mbar -background $bg -foreground $fg
 menu .mbar.fl -tearoff 0 -background $bg -foreground $fg
 .mbar add cascade -menu .mbar.fl -label File -underline 0
 
-.mbar.fl add command -label Exit -command { exit } -background $bg -foreground $fg
+.mbar.fl add command -label Exit -image logout -compound right -command { exit } -background $bg -foreground $fg
 
 frame .fr.pnl.choose.topics -background $bg
 pack .fr.pnl.choose.topics -side top
