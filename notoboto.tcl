@@ -75,6 +75,10 @@ image create photo yprev -file check-circle-material.png
 image create photo nprev -file cancel-material.png
 image create photo logout -file logout-material.png
 
+image create photo copy -file content-copy-material.png
+image create photo paste -file content-paste-material.png
+image create photo search -file search-material.png
+
 frame .fr -background $bg
 pack .fr -fill both -expand 1
 
@@ -88,9 +92,13 @@ menu .mbar -background $bg -foreground $fg
 . configure -menu .mbar
 
 menu .mbar.fl -tearoff 0 -background $bg -foreground $fg
+menu .mbar.ed -tearoff 0 -background $bg -foreground $fg
 .mbar add cascade -menu .mbar.fl -label File -underline 0
+.mbar add cascade -menu .mbar.ed -label Edit -underline 0
 
 .mbar.fl add command -label Exit -image logout -compound right -command { exit } -background $bg -foreground $fg
+.mbar.ed add command -label Copy -image copy -compound right -command { copyText .fr.pnl.notearea } -background $bg -foreground $fg
+.mbar.ed add command -label Paste -image paste -compound right -command { pasteText .fr.pnl.notearea } -background $bg -foreground $fg
 
 frame .fr.pnl.choose.topics -background $bg
 pack .fr.pnl.choose.topics -side top
