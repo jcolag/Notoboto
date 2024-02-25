@@ -99,6 +99,8 @@ menu .mbar.ed -tearoff 0 -background $bg -foreground $fg
 .mbar.fl add command -label Exit -image logout -compound right -command { exit } -background $bg -foreground $fg
 .mbar.ed add command -label Copy -image copy -compound right -command { copyText .fr.pnl.notearea } -background $bg -foreground $fg
 .mbar.ed add command -label Paste -image paste -compound right -command { pasteText .fr.pnl.notearea } -background $bg -foreground $fg
+.mbar.ed add separator
+.mbar.ed add command -label Search -image search -compound right -command { createSearchWindow } -background $bg -foreground $fg
 
 frame .fr.pnl.choose.topics -background $bg
 pack .fr.pnl.choose.topics -side top
