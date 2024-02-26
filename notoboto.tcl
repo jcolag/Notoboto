@@ -75,6 +75,7 @@ image create photo yprev -file check-circle-material.png
 image create photo nprev -file cancel-material.png
 image create photo logout -file logout-material.png
 
+image create photo cut -file content-cut-material.png
 image create photo copy -file content-copy-material.png
 image create photo paste -file content-paste-material.png
 image create photo search -file search-material.png
