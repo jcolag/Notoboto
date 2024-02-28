@@ -146,7 +146,7 @@ menu .editorContext -background $bg -foreground $fg -font uifont
 .editorContext add command -label "Undo" -state disabled
 .editorContext add command -label "Redo" -state disabled
 .editorContext add separator
-.editorContext add command -label "Cut" -state disabled
+.editorContext add command -label "Cut" -command { cutText .fr.pnl.notearea }
 .editorContext add command -label "Copy" -command { copyText .fr.pnl.notearea }
 .editorContext add command -label "Paste" -command { pasteText .fr.pnl.notearea }
 
@@ -176,8 +176,10 @@ bind .fr.pnl.notearea <Button-3> {
 
   # Check current text selection
   if {[expr {[.fr.pnl.notearea tag ranges sel] == ""}]} {
+    .editorContext entryconfigure "Cut" -state disabled
     .editorContext entryconfigure "Copy" -state disabled
   } else {
+    .editorContext entryconfigure "Cut" -state normal
     .editorContext entryconfigure "Copy" -state normal
   }
 }
