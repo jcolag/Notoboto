@@ -630,7 +630,7 @@ proc replaceText {widget searchTerm replaceTerm} {
   searchText $widget $searchTerm
   if {[$widget tag ranges sel] != ""} {
     $widget delete sel.first {sel.last + 1 char}
-    $widget insert {sel.first + 1 char} $replaceTerm
+    $widget insert [$widget index insert] $replaceTerm
   }
 }
 
