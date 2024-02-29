@@ -288,7 +288,7 @@ proc createSearchWindow {} {
   entry .searchWin.fr.entReplace -background $bg -foreground $fg -font uifont
   pack .searchWin.fr.entReplace -side top -fill x
 
-  button .searchWin.fr.btnReplace -text "Replace" -command {replaceText [.searchWin.fr.entSearch get] [.searchWin.fr.entReplace get]} -background $bg -foreground $fg -font uifont
+  button .searchWin.fr.btnReplace -text "Replace" -command {replaceText .fr.pnl.notearea [.searchWin.fr.entSearch get] [.searchWin.fr.entReplace get]} -background $bg -foreground $fg -font uifont
   pack .searchWin.fr.btnReplace -side top
 
   focus .searchWin.fr.entSearch
