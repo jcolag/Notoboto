@@ -98,6 +98,7 @@ menu .mbar.ed -tearoff 0 -background $bg -foreground $fg
 .mbar add cascade -menu .mbar.ed -label Edit -underline 0
 
 .mbar.fl add command -label Exit -image logout -compound right -command { exit } -background $bg -foreground $fg
+.mbar.ed add command -label Cut -image cut -compound right -command { cutText .fr.pnl.notearea } -background $bg -foreground $fg
 .mbar.ed add command -label Copy -image copy -compound right -command { copyText .fr.pnl.notearea } -background $bg -foreground $fg
 .mbar.ed add command -label Paste -image paste -compound right -command { pasteText .fr.pnl.notearea } -background $bg -foreground $fg
 .mbar.ed add separator
