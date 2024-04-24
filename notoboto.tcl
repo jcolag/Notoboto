@@ -65,20 +65,20 @@ if {[dict exists $config darkBackgroundColor] && [string first dark $color_theme
 font create uifont -family TkDefaultFont -size 14
 font create txfont -family TkFixedFont -size 18
 font create customFixedFont {*}$fixedFontAttrs -size 18
-image create photo icon48 -file notoboto-48.png
-image create photo icon512 -file notoboto-512.png
-image create photo newcat -file library-add-material.png
-image create photo newnote -file note-add-material.png
-image create photo browse -file open-in-browser-material.png
-image create photo reload -file sync-material.png
-image create photo yprev -file check-circle-material.png
-image create photo nprev -file cancel-material.png
-image create photo logout -file logout-material.png
+image create photo icon48 -file img/notoboto-48.png
+image create photo icon512 -file img/notoboto-512.png
+image create photo newcat -file img/library-add-material.png
+image create photo newnote -file img/note-add-material.png
+image create photo browse -file img/open-in-browser-material.png
+image create photo reload -file img/sync-material.png
+image create photo yprev -file img/check-circle-material.png
+image create photo nprev -file img/cancel-material.png
+image create photo logout -file img/logout-material.png
 
-image create photo cut -file content-cut-material.png
-image create photo copy -file content-copy-material.png
-image create photo paste -file content-paste-material.png
-image create photo search -file search-material.png
+image create photo cut -file img/content-cut-material.png
+image create photo copy -file img/content-copy-material.png
+image create photo paste -file img/content-paste-material.png
+image create photo search -file img/search-material.png
 
 frame .fr -background $bg
 pack .fr -fill both -expand 1
@@ -268,9 +268,9 @@ proc createSearchWindow {} {
   wm transient .searchWin .fr
   wm attributes .searchWin -topmost 1
 
-  image create photo regex -file regular-expression-material.png
-  image create photo mcase -file match-case-material.png
-  image create photo mword -file match-word-material.png
+  image create photo regex -file img/regular-expression-material.png
+  image create photo mcase -file img/match-case-material.png
+  image create photo mword -file img/match-word-material.png
 
   frame .searchWin.fr -background $bg
   pack .searchWin.fr -fill both -expand 1
