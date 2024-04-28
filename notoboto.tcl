@@ -289,8 +289,11 @@ proc createSearchWindow {} {
   entry .searchWin.fr.entReplace -background $bg -foreground $fg -font uifont
   pack .searchWin.fr.entReplace -side top -fill x
 
-  button .searchWin.fr.btnReplace -text "Replace" -command {replaceText .fr.pnl.notearea [.searchWin.fr.entSearch get] [.searchWin.fr.entReplace get]} -background $bg -foreground $fg -font uifont
-  pack .searchWin.fr.btnReplace -side top
+  frame .searchWin.fr.roptions -background $bg
+  checkbutton .searchWin.fr.roptions.repeat -image repeat -variable repeatReplace
+  button .searchWin.fr.roptions.btnReplace -text "Replace" -command {replaceText .fr.pnl.notearea [.searchWin.fr.entSearch get] [.searchWin.fr.entReplace get]} -background $bg -foreground $fg -font uifont
+  pack .searchWin.fr.roptions
+  pack .searchWin.fr.roptions.repeat .searchWin.fr.roptions.btnReplace -in .searchWin.fr.roptions -side left
 
   focus .searchWin.fr.entSearch
 }
