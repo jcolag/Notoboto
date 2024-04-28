@@ -74,11 +74,11 @@ image create photo reload -file img/sync-material.png
 image create photo yprev -file img/check-circle-material.png
 image create photo nprev -file img/cancel-material.png
 image create photo logout -file img/logout-material.png
-
 image create photo cut -file img/content-cut-material.png
 image create photo copy -file img/content-copy-material.png
 image create photo paste -file img/content-paste-material.png
 image create photo search -file img/search-material.png
+image create photo repeat -file img/repeat-material.png
 
 frame .fr -background $bg
 pack .fr -fill both -expand 1
