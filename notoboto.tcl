@@ -40,6 +40,7 @@ set nextSearchStart "1.0"
 set caseSearch false
 set wordSearch false
 set regexSearch false
+set repeatReplace false
 
 set color_theme [exec gsettings get org.gnome.desktop.interface gtk-theme]
 set fixedFontAttrs [font actual TkFixedFont]
@@ -255,6 +256,7 @@ proc createSearchWindow {} {
   global caseSearch
   global wordSearch
   global regexSearch
+  global repeatReplace
 
   if {[winfo exists .searchWin]} {
     raise .searchWin
@@ -633,10 +635,15 @@ proc searchText {widget searchTerm} {
 
 # Replace text in the current note.
 proc replaceText {widget searchTerm replaceTerm} {
+  global repeatReplace
+
   searchText $widget $searchTerm
   if {[$widget tag ranges sel] != ""} {
-    $widget delete sel.first {sel.last + 1 char}
+    $widget delete sel.first sel.last
     $widget insert [$widget index insert] $replaceTerm
+    if {$repeatReplace} {
+      replaceText $widget $searchTerm $replaceTerm
+    }
   }
 }
 
