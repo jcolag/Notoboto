@@ -42,6 +42,11 @@ set wordSearch false
 set regexSearch false
 set repeatReplace false
 
+set titleText ""
+set posText ""
+set wdText ""
+set chText ""
+
 set color_theme [exec gsettings get org.gnome.desktop.interface gtk-theme]
 set fixedFontAttrs [font actual TkFixedFont]
 
