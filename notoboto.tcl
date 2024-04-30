@@ -95,6 +95,15 @@ pack .fr.pnl -fill both -expand 1
 frame .fr.pnl.choose -width [expr {$width / 5 }] -background $bg
 pack .fr.pnl.choose -side left -fill y
 
+frame .fr.status -borderwidth 1 -background $bg
+pack .fr.status -side bottom -fill x
+
+label .fr.status.title -background $bg -borderwidth 1 -font uifont -foreground $fg -relief raised -textvariable titleText
+label .fr.status.words -background $bg -borderwidth 1 -font uifont -foreground $fg -relief raised -textvariable wdText
+label .fr.status.chars -background $bg -borderwidth 1 -font uifont -foreground $fg -relief raised -textvariable chText
+label .fr.status.position -background $bg -borderwidth 1 -font uifont -foreground $fg -relief raised -textvariable posText
+pack .fr.status.position .fr.status.chars .fr.status.words .fr.status.title .fr.status -side right
+
 menu .mbar -background $bg -foreground $fg
 . configure -menu .mbar
 
