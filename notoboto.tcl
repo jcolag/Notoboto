@@ -328,6 +328,13 @@ proc updateSelectedItem {} {
 
 # Handle the expired typing timer by updating the note display and file.
 proc typingTimeout {} {
+  global current_note
+  global update_preview
+  global chText
+  global posText
+  global titleText
+  global wdText
+
   if {![.fr.pnl.notearea edit modified]} {
     # Nothing to do, if nothing changed.
     return
