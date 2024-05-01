@@ -696,6 +696,15 @@ proc recency { a b } {
   return -1
 }
 
+# Count words in widget
+proc countText {widget} {
+  set text [.fr.pnl.notearea get 1.0 end]
+  set words [regexp -all -inline {\S+} $text]
+  set nw [llength $words]
+  set chars [string length $text]
+  return [list $nw $chars]
+}
+
 # Generate a random color
 proc randomColor {} {
   set h [expr { int(256 * rand()) }]
