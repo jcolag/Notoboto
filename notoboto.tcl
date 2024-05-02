@@ -256,6 +256,14 @@ bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
   pack .fr.pnl.choose.auto -side top -fill x
   detectLinks .fr.pnl.notearea
   addMarkdownSyntaxHighlighting .fr.pnl.notearea 
+
+  set title [dict get $current_note title]
+  set pos [.fr.pnl.notearea index insert]
+  set lens [countText .fr.pnl.notearea]
+  set titleText "Title: $title"
+  set posText "Position: $pos"
+  set wdText "~[lindex $lens 0] words"
+  set chText "[lindex $lens 1] characters"
 }
 
 # Bind a timeout to keystrokes.
