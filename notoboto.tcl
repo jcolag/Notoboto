@@ -352,6 +352,13 @@ proc typingTimeout {} {
   addMarkdownSyntaxHighlighting .fr.pnl.notearea
   detectLinks .fr.pnl.notearea
 
+  # Update status bar.
+  set title [dict get $current_note title]
+  set lens [countText .fr.pnl.notearea]
+  set titleText "Title: $title"
+  set wdText "~[lindex $lens 0] words"
+  set chText "[lindex $lens 1] characters"
+
   if {$::saving} {
     # Don't interfere with an existing action.
     return
