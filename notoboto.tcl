@@ -343,6 +343,9 @@ proc typingTimeout {} {
   global titleText
   global wdText
 
+  set pos [.fr.pnl.notearea index insert]
+  set posText "Position: $pos"
+
   if {![.fr.pnl.notearea edit modified]} {
     # Nothing to do, if nothing changed.
     return
