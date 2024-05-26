@@ -868,7 +868,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   set italicPattern {\*\w([^*]+)\*(?!\*)}
   set italicPattern2 {_\w([^_]+)_(?!_)}
   set codePattern {`[^`\n]+`}
-  set strikePattern {~~\w([^~]+)~~}
+  set strikePattern {~~\w([^_\n]*)~~}
   set codeBlockPattern {(?s)```.*?```}
   set listPattern {^\s*[\*\-\+]\s+[^\n]*}
   set quotePattern {^\s*>\s+[^\n]*}
