@@ -822,7 +822,7 @@ proc openUrlInBrowser {url} {
 
 # Tag links as clickable
 proc detectLinks {widget} {
-  set urlPattern {(http|https|ftp)://[a-zA-Z0-9,./?=_&:@%+-]*}
+  set urlPattern {(http|https|ftp)://[a-zA-Z0-9,./?=_&:@%+-]*(#[a-zA-Z0-9._-]*)?}
 
   $widget tag remove link 1.0 end
 
