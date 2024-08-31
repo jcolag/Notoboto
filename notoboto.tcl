@@ -35,6 +35,7 @@ set folders_unsorted [dict get $map "folders"]
 set folders [lsort -index 5 $folders_unsorted]
 set matches [list]
 set current_note [dict create]
+set imagesList []
 
 set nextSearchStart "1.0"
 set caseSearch false
@@ -872,6 +873,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   set codeBlockPattern {(?s)```.*?```}
   set listPattern {^\s*[\*\-\+]\s+[^\n]*}
   set quotePattern {^\s*>\s+[^\n]*}
+  set imagePattern {!\[.*?\]\(([^ )]+)(?: ".*?")?\)}
 
   # Function to apply tags based on patterns
   proc applyTagsForPattern {widget pattern tag} {
@@ -884,6 +886,42 @@ proc addMarkdownSyntaxHighlighting {widget} {
       if {[regexp $pattern $textAfterMatchStart match]} {
         set matchEnd [$widget index "$matchStart + [string length $match] chars"]
         $widget tag add $tag $matchStart $matchEnd
+      }
+      set startIndex $matchEnd
+    }
+  }
+
+  # Function to embed images based on Markdown image syntax
+  proc embedImages {widget pattern} {
+    global imagesList
+    global noteroot
+    set startIndex "1.0"
+
+    while {$startIndex != "end"} {
+      set matchStart [$widget search -regexp $pattern $startIndex end]
+      set imagePath ""
+      if {$matchStart == ""} break
+
+      set matchEnd [$widget index "$matchStart lineend"]
+      set textAfterMatchStart [$widget get $matchStart $matchEnd]
+
+      if {[regexp $pattern $textAfterMatchStart fullMatch imagePath]} {
+        set storage [string first ":storage/" $imagePath]
+
+        if {$storage > -1} {
+          set l [expr $storage + 9]
+          set x [string range $imagePath $l end]
+          set imagePath [string cat $noteroot "/images/" $x]
+        } else {
+          break
+        }
+
+        # Insert the image at the current position
+        set image [image create photo -file $imagePath]
+
+        lappend imagesList $image
+        lappend imagesList "\n-\n"
+        $widget image create $matchEnd -image $image
       }
       set startIndex $matchEnd
     }
@@ -904,6 +942,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   applyTagsForPattern $widget $codeBlockPattern codeblock
   applyTagsForPattern $widget $listPattern listitem
   applyTagsForPattern $widget $quotePattern quote
+  embedImages $widget $imagePattern
 }
 
 # Transform CSON into a Tcl dictionary
