@@ -1,3 +1,10 @@
+<!--
+SPDX-FileCopyrightText: 2024 John Colagioia
+SPDX-FileCopyrightText: 2024 John Colagioia <jcolag@colagioia.net>
+
+SPDX-License-Identifier: AGPL-3.0-or-later
+-->
+
 # Notoboto
 
 I apparently needed to take another pass at a note-taking application, this time using the best technology that *1988* has to offer.

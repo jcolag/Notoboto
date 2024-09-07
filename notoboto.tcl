@@ -1,5 +1,9 @@
 #!/usr/bin/wish
 
+# SPDX-FileCopyrightText: 2024 John Colagioia <jcolag@colagioia.net>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 # Notoboto:  A note-taking application that can work with but migrates
 # away from Boost Note.
 
