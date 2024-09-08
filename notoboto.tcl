@@ -901,6 +901,12 @@ proc addMarkdownSyntaxHighlighting {widget} {
     global noteroot
     set startIndex "1.0"
 
+    set imagesList []
+    set images [$widget image names]
+    foreach name $images {
+      $widget delete $name
+    }
+
     while {$startIndex != "end"} {
       set matchStart [$widget search -regexp $pattern $startIndex end]
       set imagePath ""
@@ -920,9 +926,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
           break
         }
 
-        # Insert the image at the current position
         set image [image create photo -file $imagePath]
-
         lappend imagesList $image
         lappend imagesList "\n-\n"
         $widget image create $matchEnd -image $image
