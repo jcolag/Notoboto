@@ -900,6 +900,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
     global imagesList
     global noteroot
     set startIndex "1.0"
+    set index [$widget index {insert + 1 char}]
 
     set imagesList []
     set images [$widget image names]
@@ -932,6 +933,10 @@ proc addMarkdownSyntaxHighlighting {widget} {
         $widget image create $matchEnd -image $image
       }
       set startIndex $matchEnd
+    }
+
+    if {!$startIndex eq ""} {
+      $widget see $index
     }
   }
 
