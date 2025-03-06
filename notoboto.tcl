@@ -940,21 +940,21 @@ proc addMarkdownSyntaxHighlighting {widget} {
     }
   }
 
-  applyTagsForPattern $widget $header1Pattern header1
-  applyTagsForPattern $widget $header2Pattern header2
-  applyTagsForPattern $widget $header3Pattern header3
-  applyTagsForPattern $widget $header4Pattern header4
-  applyTagsForPattern $widget $header5Pattern header5
-  applyTagsForPattern $widget $header6Pattern header6
-  applyTagsForPattern $widget $boldPattern bold
-  applyTagsForPattern $widget $boldPattern2 bold2
-  applyTagsForPattern $widget $italicPattern italic
-  applyTagsForPattern $widget $italicPattern2 italic2
-  applyTagsForPattern $widget $codePattern code
-  applyTagsForPattern $widget $strikePattern strike
-  applyTagsForPattern $widget $codeBlockPattern codeblock
-  applyTagsForPattern $widget $listPattern listitem
-  applyTagsForPattern $widget $quotePattern quote
+  applyTagsForPattern $widget $header1Pattern header1 false
+  applyTagsForPattern $widget $header2Pattern header2 false
+  applyTagsForPattern $widget $header3Pattern header3 false
+  applyTagsForPattern $widget $header4Pattern header4 false
+  applyTagsForPattern $widget $header5Pattern header5 false
+  applyTagsForPattern $widget $header6Pattern header6 false
+  applyTagsForPattern $widget $boldPattern bold false
+  applyTagsForPattern $widget $boldPattern2 bold2 false
+  applyTagsForPattern $widget $italicPattern italic false
+  applyTagsForPattern $widget $italicPattern2 italic2 false
+  applyTagsForPattern $widget $codePattern code false
+  applyTagsForPattern $widget $strikePattern strike false
+  applyTagsForPattern $widget $listPattern listitem false
+  applyTagsForPattern $widget $quotePattern quote false
+  applyTagsForPattern $widget $codeBlockPattern codeblock true
   embedImages $widget $imagePattern
 }
 
