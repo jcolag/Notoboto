@@ -880,7 +880,7 @@ proc addMarkdownSyntaxHighlighting {widget} {
   set imagePattern {!\[.*?\]\(([^ )]+)(?: ".*?")?\)}
 
   # Function to apply tags based on patterns
-  proc applyTagsForPattern {widget pattern tag} {
+  proc applyTagsForPattern {widget pattern tag clear} {
     $widget tag remove $tag 1.0 end
     set startIndex "1.0"
     while {$startIndex != "end"} {
@@ -889,6 +889,11 @@ proc addMarkdownSyntaxHighlighting {widget} {
       set textAfterMatchStart [$widget get $matchStart end]
       if {[regexp $pattern $textAfterMatchStart match]} {
         set matchEnd [$widget index "$matchStart + [string length $match] chars"]
+        if {$clear} {
+          foreach name [$widget tag names] {
+            $widget tag remove $name $matchStart $matchEnd
+          }
+        }
         $widget tag add $tag $matchStart $matchEnd
       }
       set startIndex $matchEnd
