@@ -90,6 +90,7 @@ image create photo copy -file img/content-copy-material.png
 image create photo paste -file img/content-paste-material.png
 image create photo search -file img/search-material.png
 image create photo repeat -file img/repeat-material.png
+image create photo outline -file img/list-material.png
 
 frame .fr -background $bg
 pack .fr -fill both -expand 1
