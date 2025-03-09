@@ -353,6 +353,14 @@ proc createOutlineWindow {} {
   wm geometry .mapWin +0-0
   wm transient .mapWin .fr
   wm attributes .mapWin -topmost 1
+
+  frame .mapWin.fr -background $bg
+  pack .mapWin.fr -fill both -expand 1
+
+  ttk::treeview .mapWin.fr.map -columns "Heading Location" -displaycolumns "Heading"
+  .mapWin.fr.map column "#0" -width 100
+  .mapWin.fr.map heading Heading -text "Heading"
+  pack .mapWin.fr.map -side top -fill x
 }
 
 # Reset the timer.
