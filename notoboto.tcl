@@ -328,6 +328,33 @@ proc createSearchWindow {} {
   focus .searchWin.fr.entSearch
 }
 
+# Open a window allowing navigation by headings
+proc createOutlineWindow {} {
+  global current_note
+  global bg
+  global fg
+  set lastLevel -1
+  set hlist {{} {} {} {} {} {} {}}
+  set searchOptions {}
+  set headPattern {^#+ }
+
+  if {$current_note == {}} {
+    return;
+  }
+
+  if {[winfo exists .mapWin]} {
+    raise .mapWin
+    focus .mapWin.fr.map
+    return
+  }
+
+  toplevel .mapWin
+  wm title .mapWin "Document Map"
+  wm geometry .mapWin +0-0
+  wm transient .mapWin .fr
+  wm attributes .mapWin -topmost 1
+}
+
 # Reset the timer.
 proc resetTimer {} {
   after cancel $::typing_timer
