@@ -361,6 +361,24 @@ proc createOutlineWindow {} {
   .mapWin.fr.map column "#0" -width 100
   .mapWin.fr.map heading Heading -text "Heading"
   pack .mapWin.fr.map -side top -fill x
+
+  lappend searchOptions -regexp
+  set cur 0.0
+  while 1 {
+    set cur [.fr.pnl.notearea search -count length {*}$searchOptions -- $headPattern $cur end]
+    if {$cur == ""} {
+      break
+    }
+    set level [expr $length - 1]
+    set space [.fr.pnl.notearea search -count length -- " " $cur end]
+    set eol [.fr.pnl.notearea search -count length -- "\n" $space end]
+    set heading [string trim [.fr.pnl.notearea get $cur $eol]]
+    set heading [regsub -all "#" [string range $heading 1 end] "  "]
+    set parent [lindex $hlist [expr $level - 1]]
+    set item [.mapWin.fr.map insert $parent end -values [list $heading $cur] -open true]
+    lset hlist $level $item
+    set cur $eol
+  }
 }
 
 # Reset the timer.
