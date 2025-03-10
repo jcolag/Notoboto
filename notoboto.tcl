@@ -361,6 +361,12 @@ proc createOutlineWindow {} {
   .mapWin.fr.map column "#0" -width 100
   .mapWin.fr.map heading Heading -text "Heading"
   pack .mapWin.fr.map -side top -fill x
+  bind .mapWin.fr.map <<TreeviewSelect>> {
+    set curItem [.mapWin.fr.map focus]
+    set contents [.mapWin.fr.map item $curItem -values]
+    set pos [lindex $contents 1]
+    .fr.pnl.notearea see $pos
+  }
 
   lappend searchOptions -regexp
   set cur 0.0
