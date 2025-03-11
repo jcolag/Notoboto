@@ -115,9 +115,11 @@ menu .mbar -background $bg -foreground $fg
 
 menu .mbar.fl -tearoff 0 -background $bg -foreground $fg
 menu .mbar.ed -tearoff 0 -background $bg -foreground $fg
-.mbar add cascade -menu .mbar.fl -label File -underline 0
+.mbar add cascade -menu .mbar.fl -label Notoboto -underline 0
 .mbar add cascade -menu .mbar.ed -label Edit -underline 0
 
+.mbar.fl add command -label "Show Outline" -image outline -compound right -command { createOutlineWindow } -background $bg -foreground $fg
+.mbar.fl add separator
 .mbar.fl add command -label Exit -image logout -compound right -command { exit } -background $bg -foreground $fg
 .mbar.ed add command -label Cut -image cut -compound right -command { cutText .fr.pnl.notearea } -background $bg -foreground $fg
 .mbar.ed add command -label Copy -image copy -compound right -command { copyText .fr.pnl.notearea } -background $bg -foreground $fg
