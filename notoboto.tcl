@@ -209,6 +209,7 @@ bind .fr.pnl.notearea <Button-3> {
 }
 
 bind . <Control-f> {createSearchWindow}
+bind . <Control-m> {createOutlineWindow}
 bind . <Control-g> {
   if {![winfo exists .searchWin]} {
     createSearchWindow
