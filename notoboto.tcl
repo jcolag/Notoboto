@@ -92,6 +92,9 @@ image create photo search -file img/search-material.png
 image create photo repeat -file img/repeat-material.png
 image create photo outline -file img/list-material.png
 
+ttk::style configure Treeview -background $bg -foreground $fg -font uifont -fill both -expand 1
+ttk::style configure Treeview.Heading -background $fg -foreground $bg -font uifont
+
 frame .fr -background $bg
 pack .fr -fill both -expand 1
 
