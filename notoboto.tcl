@@ -354,7 +354,7 @@ proc createOutlineWindow {} {
     return
   }
 
-  toplevel .mapWin
+  toplevel .mapWin -background $bg
   wm title .mapWin "Document Map"
   wm geometry .mapWin +0-0
   wm transient .mapWin .fr
