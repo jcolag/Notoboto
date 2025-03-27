@@ -338,7 +338,6 @@ proc createSearchWindow {} {
 proc createOutlineWindow {} {
   global current_note
   global bg
-  global fg
   set lastLevel -1
   set hlist {{} {} {} {} {} {} {}}
   set searchOptions {}
