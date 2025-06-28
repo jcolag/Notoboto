@@ -12,6 +12,7 @@ package require Markdown
 package require Tclx
 package require json
 package require uuid
+package require yaml
 
 set configfile "~/.config/Miniboost.json"
 
