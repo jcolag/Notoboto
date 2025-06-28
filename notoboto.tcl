@@ -632,8 +632,11 @@ proc openFolder { idx folders root getNote matches } {
     return -1
   }
 
-  set path [append files $root "/notes/*.cson"]
-  set files [glob $path]
+  set csonPath [file join $root "notes" "*.cson"]
+  set mdPath [file join $root "notes" "*.md"]
+  set csonFiles [glob -nocomplain $csonPath]
+  set mdFiles [glob -nocomplain $mdPath]
+  set files [concat $csonFiles $mdFiles]
   set o [lindex $folders $idx]
   set key [dict get $o "key"]
   set count 0
