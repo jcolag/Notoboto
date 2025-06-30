@@ -1032,6 +1032,26 @@ proc addMarkdownSyntaxHighlighting {widget} {
   embedImages $widget $imagePattern
 }
 
+# Transform Markdown into a Tcl dictionary
+proc parseMarkdown {markdown_string} {
+  regsub -all {\r\n?} $markdown_string "\n" markdown_string
+  set lines [split $markdown_string "\n"]
+  set segments {}
+
+  foreach line $lines {
+    if {$line eq "---"} {
+      lappend segments $current_segment
+      set current_segment ""
+    } else {
+      append current_segment "$line\n"
+    }
+  }
+
+  if {[string length $current_segment] > 0} {
+      lappend segments $current_segment
+  }
+}
+
 # Transform CSON into a Tcl dictionary
 proc parseCson {cson_string} {
   set cson_data [dict create]
