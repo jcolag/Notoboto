@@ -1032,6 +1032,18 @@ proc addMarkdownSyntaxHighlighting {widget} {
   embedImages $widget $imagePattern
 }
 
+# Transform a note file into a Tcl dictionary
+proc parseFile {text} {
+  if {[string first "content: '''\n" $text] != -1} {
+    return [parseCson $text]
+  } elseif {[string first "type: \"SNIPPET_NOTE\"\n" $text] != -1} {
+    # Do something useful with the snippet notes, someday.
+    return [parseCson $text]
+  } else {
+    return [parseMarkdown $text]
+  }
+}
+
 # Transform Markdown into a Tcl dictionary
 proc parseMarkdown {markdown_string} {
   regsub -all {\r\n?} $markdown_string "\n" markdown_string
