@@ -1050,6 +1050,16 @@ proc parseMarkdown {markdown_string} {
   if {[string length $current_segment] > 0} {
       lappend segments $current_segment
   }
+
+  set o [yaml::yaml2dict [lindex $segments 0]]
+  set content [lrange $segments 1 end]
+  dict set o "content" [join $content "\n---\n"]
+
+  if {![dict exists o "format"]} {
+    dict set o "format" "md"
+  }
+
+  return $o
 }
 
 # Transform CSON into a Tcl dictionary
