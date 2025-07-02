@@ -1139,6 +1139,17 @@ proc parseCson {cson_string} {
   return $cson_data
 }
 
+# Transform a Tcl dictionary into the appropriate serialization format
+proc stringifyDict {obj} {
+  set what [dict get $obj "format"]
+
+  if {$what == "md"} {
+    return [stringifyMarkdown $obj]
+  } elseif {$what == "cson"} {
+    return [stringifyCson $obj]
+  }
+}
+
 # Transform a Tcl dictionary into a Markdown string
 proc stringifyMarkdown {obj} {
   set yamlObj [dict remove $obj "content"]
