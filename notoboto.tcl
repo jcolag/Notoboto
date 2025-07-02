@@ -649,7 +649,7 @@ proc openFolder { idx folders root getNote matches } {
     close $fp
 
     if {[string first $key $text] != -1} {
-      set obj [parseCson $text]
+      set obj [parseFile $text]
       set title [dict get $obj title]
       set title [string trim $title '"']
 
