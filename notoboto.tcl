@@ -1139,6 +1139,21 @@ proc parseCson {cson_string} {
   return $cson_data
 }
 
+# Transform a Tcl dictionary into a Markdown string
+proc stringifyMarkdown {obj} {
+  set yamlObj [dict remove $obj "content"]
+  set result [yaml::dict2yaml $yamlObj]
+
+  append result "---\n"
+  append result [dict get $obj "content"]
+
+  set lines [split $result "\n"]
+  set lines [lrange $lines 1 end]
+  set result [join $lines "\n"]
+
+  return [string trim $result]
+}
+
 # Transform a Tcl dictionary into a CSON string
 proc stringifyCson {obj} {
   set result ""
