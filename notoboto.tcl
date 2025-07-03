@@ -1136,6 +1136,10 @@ proc parseCson {cson_string} {
     }
   }
 
+  if {![dict exists cson_data "format"]} {
+    dict set cson_data "format" "cson"
+  }
+
   return $cson_data
 }
 
