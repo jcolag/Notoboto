@@ -471,7 +471,7 @@ proc typingTimeout {} {
   dict set current_note updatedAt $time
 
   # Write the file.
-  set cson [stringifyCson $current_note]
+  set cson [stringifyDict $current_note]
   set path [append path $::noteroot "/notes/" $filename]
   set fp [open $path w]
   puts $fp $cson
