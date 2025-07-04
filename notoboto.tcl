@@ -783,6 +783,20 @@ proc pasteText {widget} {
   $widget insert insert $clipboardText
 }
 
+# Convert a Timestamp to UNIX time.
+proc ts2u { timestamp } {
+  set ts [string trim $timestamp "'\" "]
+
+  if {[string is double -strict $ts]} {
+    return $ts
+  }
+
+  regsub -nocase {Z$} $ts { UTC} ts
+  regsub {\.\d+} $ts {} ts
+
+  return [clock scan $ts -format "%Y-%m-%dT%H:%M:%S %Z"]
+}
+
 # Compare dates for sorting.
 proc recency { a b } {
   set date1 [dict get $a updatedAt]
