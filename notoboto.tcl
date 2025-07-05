@@ -799,8 +799,8 @@ proc ts2u { timestamp } {
 
 # Compare dates for sorting.
 proc recency { a b } {
-  set date1 [dict get $a updatedAt]
-  set date2 [dict get $b updatedAt]
+  set date1 [ts2u [dict get $a updatedAt]]
+  set date2 [ts2u [dict get $b updatedAt]]
 
   if {$date2 < $date1} {
     return 1
