@@ -446,12 +446,7 @@ proc typingTimeout {} {
   after cancel $::typing_timer
 
   set $::saving true
-  set stats [dict create]
   set filename [dict get $current_note key]
-
-  if {[dict exists $current_note stats]} {
-    set stats [dict get $current_note stats]
-  }
 
   set now [clock seconds]
 
@@ -465,9 +460,6 @@ proc typingTimeout {} {
 
   # Update timestamps.
   set time [clock format $now -gmt true -format "%Y-%m-%dT%H:%M:%S.000Z"]
-  dict set stats mtime $time
-  dict set stats mtimeMs [expr $now * 1000]
-  dict set current_note stats $stats
   dict set current_note updatedAt $time
 
   # Write the file.
@@ -525,7 +517,6 @@ proc newNote { } {
   global folders
   global matches
   set note [dict create]
-  set stats [dict create]
   set now [clock seconds]
   set time [clock format $now -gmt true -format "%Y-%m-%dT%H:%M:%S.000Z"]
   set folder [lindex $folders $current_folder]
@@ -541,25 +532,6 @@ proc newNote { } {
   dict set note isStarred false
   dict set note isTrashed false
 
-  dict set stats dev 64769
-  dict set stats mode 33204
-  dict set stats nlink 1
-  dict set stats uid [id userid]
-  dict set stats gid [id groupid]
-  dict set stats rdev 0
-  dict set stats blksize 4096
-  dict set stats ino 0
-  dict set stats size 0
-  dict set stats blocks 24
-  dict set stats atimeMs $now
-  dict set stats mtimeMs $now
-  dict set stats ctimeMs $now
-  dict set stats atime $time
-  dict set stats ctime $time
-  dict set stats mtime $time
-  dict set stats birthtime $time
-
-  dict set note stats $stats
   dict set note key "$key.cson"
 
   set matches [linsert $matches 0 $note]
