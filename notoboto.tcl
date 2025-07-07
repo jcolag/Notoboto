@@ -98,7 +98,7 @@ ttk::style configure Treeview -background $bg -foreground $fg -font uifont -fill
 ttk::style configure Treeview.Heading -background $fg -foreground $bg -font uifont
 
 frame .fr -background $bg
-pack .fr -fill both -expand 1
+pack .fr -side top -fill both -expand 1
 
 frame .fr.pnl -relief raised -borderwidth 1 -background $bg
 pack .fr.pnl -fill both -expand 1
