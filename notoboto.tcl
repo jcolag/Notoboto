@@ -279,6 +279,12 @@ bind .fr.pnl.choose.notes.note <<ListboxSelect>> {
   set posText "Position: $pos"
   set wdText "~[lindex $lens 0] words"
   set chText "[lindex $lens 1] characters"
+
+  if {[dict get $current_note "format"] == "md"} {
+    .mbar.fl entryconfigure "Upgrade Note Format" -state disabled
+  } else {
+    .mbar.fl entryconfigure "Upgrade Note Format" -state normal
+  }
 }
 
 # Bind a timeout to keystrokes.
