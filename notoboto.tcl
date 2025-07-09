@@ -533,6 +533,10 @@ proc newNote { } {
   set key [uuid::uuid generate]
   set keyExt "cson"
 
+  if {[dict exists $config newNoteType]} {
+    set noteType [dict get $config newNoteType]
+  }
+
   dict set note createdAt $time
   dict set note updatedAt $time
   dict set note type "MARKDOWN_NOTE"
