@@ -539,7 +539,6 @@ proc newNote { } {
 
   dict set note createdAt $time
   dict set note updatedAt $time
-  dict set note type "MARKDOWN_NOTE"
   dict set note folder [dict get $folder key]
   dict set note title "Untitled Note"
   dict set note content ""
@@ -547,7 +546,14 @@ proc newNote { } {
   dict set note isStarred false
   dict set note isTrashed false
 
-  dict set note key "$key.cson"
+  if {$noteType eq "cson" || $noteType eq ""} {
+  dict set note type "MARKDOWN_NOTE"
+  } else {
+    set keyExt "md"
+  }
+
+  dict set note format $keyExt
+  dict set note key "$key.$keyExt"
 
   set matches [linsert $matches 0 $note]
   .fr.pnl.choose.notes.note insert 0 [dict get $note title]
