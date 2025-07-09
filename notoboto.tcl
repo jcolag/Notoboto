@@ -521,14 +521,17 @@ proc previewNote {{ open true }} {
 
 # Handle requests for new notes.
 proc newNote { } {
+  global config
   global current_folder
   global folders
   global matches
+  set noteType "cson"
   set note [dict create]
   set now [clock seconds]
   set time [clock format $now -gmt true -format "%Y-%m-%dT%H:%M:%S.000Z"]
   set folder [lindex $folders $current_folder]
   set key [uuid::uuid generate]
+  set keyExt "cson"
 
   dict set note createdAt $time
   dict set note updatedAt $time
