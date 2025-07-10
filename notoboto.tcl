@@ -401,6 +401,11 @@ proc createOutlineWindow {} {
   }
 }
 
+# Replace the CSON-based note with a Markdown+Metadata equivalent
+proc replaceWithMarkdown {} {
+  dict set $current_note format md
+}
+
 # Reset the timer.
 proc resetTimer {} {
   after cancel $::typing_timer
