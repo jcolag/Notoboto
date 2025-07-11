@@ -403,7 +403,20 @@ proc createOutlineWindow {} {
 
 # Replace the CSON-based note with a Markdown+Metadata equivalent
 proc replaceWithMarkdown {} {
-  dict set $current_note format md
+  global current_note
+  global stopword_dict
+  set key [dict get $current_note key]
+  set title [dict get $current_note title]
+  set slug [slugFromTitle $title $stopword_dict]
+
+  dict set current_note key "$slug.md"
+  dict set current_note format "md"
+  .fr.pnl.notearea edit modified true
+
+  set path [append path $::noteroot "/notes/" $key]
+
+  typingTimeout
+  file delete $path
 }
 
 # Reset the timer.
