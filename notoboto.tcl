@@ -401,6 +401,27 @@ proc createOutlineWindow {} {
   }
 }
 
+# Create a filename by removing stop-words from the title and hyphenating.
+proc slugFromTitle {title stopword_dict} {
+  set title [string tolower $title]
+  set ulid [::ulid::ulid]
+  set words [regexp -all -inline {\w+} $title]
+  set filtered {}
+
+  foreach word $words {
+    if {![dict exists $stopword_dict $word]} {
+      lappend filtered $word
+    }
+  }
+
+  set slug [join $filtered -]
+
+  regsub -- {^-+} $slug "" slug
+  regsub -- {-+$} $slug "" slug
+
+  return "${slug}-${ulid}"
+}
+
 # Replace the CSON-based note with a Markdown+Metadata equivalent
 proc replaceWithMarkdown {} {
   global current_note
