@@ -15,6 +15,9 @@ package require uuid
 package require yaml
 
 set configfile "~/.config/Miniboost.json"
+set stopword_dict {}
+
+source "stopwords.tcl"
 
 set width [expr { [winfo vrootwidth  .] / 4 * 3 }]
 set height [expr { [winfo vrootheight .] / 4 * 3 }]
@@ -61,6 +64,10 @@ set fg [dict get $config foregroundColor]
 
 close $confp
 close $mapp
+
+foreach word $stopwords {
+    dict set stopword_dict $word 1
+}
 
 foreach argValue $argv {
   if {[string first "--theme=" $argValue] == 0} {
