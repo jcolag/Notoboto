@@ -446,7 +446,7 @@ proc replaceWithMarkdown {} {
   dict set current_note format "md"
   .fr.pnl.notearea edit modified true
 
-  set path [append path $::noteroot "/notes/" $key]
+  set path "${::noteroot}/notes/$key"
 
   typingTimeout
   file delete $path
@@ -470,6 +470,7 @@ proc typingTimeout {} {
   global update_preview
   global chText
   global posText
+  global stopword_dict
   global titleText
   global wdText
 
