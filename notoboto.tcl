@@ -130,6 +130,10 @@ menu .mbar.ed -tearoff 0 -background $bg -foreground $fg
 .mbar add cascade -menu .mbar.fl -label Notoboto -underline 0
 .mbar add cascade -menu .mbar.ed -label Edit -underline 0
 
+.mbar.fl add command -label "New Note" -image newnote -compound left -command { newNote } -background $bg -foreground $fg
+.mbar.fl add command -label "Auto-Preview" -image nprev -compound left -command { autoUpdate } -background $bg -foreground $fg
+.mbar.fl add command -label "View in Browser" -image browse -compound left -command { previewNote } -background $bg -foreground $fg
+.mbar.fl add command -label "Reload File" -image reload -compound left -command { reloadNote } -background $bg -foreground $fg
 .mbar.fl add separator
 .mbar.fl add command -label "Show Outline" -image outline -compound left -command { createOutlineWindow } -background $bg -foreground $fg
 .mbar.fl add command -label "Upgrade Note Format" -image markdown -compound left -command { replaceWithMarkdown } -background $bg -foreground $fg -state disabled
