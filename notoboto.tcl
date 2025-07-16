@@ -130,15 +130,16 @@ menu .mbar.ed -tearoff 0 -background $bg -foreground $fg
 .mbar add cascade -menu .mbar.fl -label Notoboto -underline 0
 .mbar add cascade -menu .mbar.ed -label Edit -underline 0
 
-.mbar.fl add command -label "Show Outline" -image outline -compound right -command { createOutlineWindow } -background $bg -foreground $fg
-.mbar.fl add command -label "Upgrade Note Format" -image markdown -compound right -command { replaceWithMarkdown } -background $bg -foreground $fg -state disabled
 .mbar.fl add separator
-.mbar.fl add command -label Exit -image logout -compound right -command { exit } -background $bg -foreground $fg
-.mbar.ed add command -label Cut -image cut -compound right -command { cutText .fr.pnl.notearea } -background $bg -foreground $fg
-.mbar.ed add command -label Copy -image copy -compound right -command { copyText .fr.pnl.notearea } -background $bg -foreground $fg
-.mbar.ed add command -label Paste -image paste -compound right -command { pasteText .fr.pnl.notearea } -background $bg -foreground $fg
+.mbar.fl add command -label "Show Outline" -image outline -compound left -command { createOutlineWindow } -background $bg -foreground $fg
+.mbar.fl add command -label "Upgrade Note Format" -image markdown -compound left -command { replaceWithMarkdown } -background $bg -foreground $fg -state disabled
+.mbar.fl add separator
+.mbar.fl add command -label Exit -image logout -compound left -command { exit } -background $bg -foreground $fg
+.mbar.ed add command -label Cut -image cut -compound left -command { cutText .fr.pnl.notearea } -background $bg -foreground $fg
+.mbar.ed add command -label Copy -image copy -compound left -command { copyText .fr.pnl.notearea } -background $bg -foreground $fg
+.mbar.ed add command -label Paste -image paste -compound left -command { pasteText .fr.pnl.notearea } -background $bg -foreground $fg
 .mbar.ed add separator
-.mbar.ed add command -label Search -image search -compound right -command { createSearchWindow } -background $bg -foreground $fg
+.mbar.ed add command -label Search -image search -compound left -command { createSearchWindow } -background $bg -foreground $fg
 
 frame .fr.pnl.choose.topics -background $bg
 pack .fr.pnl.choose.topics -side top
