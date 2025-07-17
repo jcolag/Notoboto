@@ -507,8 +507,6 @@ proc typingTimeout {} {
   after cancel $::typing_timer
 
   set $::saving true
-  set filename [dict get $current_note key]
-
   set now [clock seconds]
 
   # Update content
@@ -523,13 +521,24 @@ proc typingTimeout {} {
   set time [clock format $now -gmt true -format "%Y-%m-%dT%H:%M:%S.000Z"]
   dict set current_note updatedAt $time
 
+  # Update filename.
+  set fmt [dict get $current_note format]
+  set fmt [string trim $fmt "'\" "]
+  set old_key [string trim [dict get $current_note key]]
+  set slug [slugFromTitle $title $stopword_dict]
+  set filename "${slug}.${fmt}"
+  dict set current_note key $filename
+
   # Write the file.
-  set cson [stringifyDict $current_note]
-  set path [append path $::noteroot "/notes/" $filename]
-  set fp [open $path w]
-  puts $fp $cson
+  set note_text [stringifyDict $current_note]
+  set old_file "${::noteroot}/notes/${old_key}"
+  set new_file "${::noteroot}/notes/${filename}"
+  set fp [open $old_file w]
+
+  puts $fp $note_text
   close $fp
   set $::saving false
+  file rename $old_file $new_file
   .fr.pnl.notearea edit modified 0
 
   if {$update_preview} {
