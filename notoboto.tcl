@@ -17,6 +17,7 @@ package require yaml
 set configfile "~/.config/Miniboost.json"
 set stopword_dict {}
 
+source "ulid.tcl"
 source "stopwords.tcl"
 
 set width [expr { [winfo vrootwidth  .] / 4 * 3 }]
