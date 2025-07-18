@@ -955,8 +955,11 @@ proc openUrlInBrowser {url} {
     "aqua" {  # macOS
       exec open $url
     }
-    default {  # Assume X11 (Linux, BSD, etc.)
+    "x11" {
       exec xdg-open $url
+    }
+    default {
+      puts "You may need to open ${url} manually on this system."
     }
   }
 }
