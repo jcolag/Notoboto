@@ -430,21 +430,26 @@ proc slugFromTitle {title stopword_dict} {
 
   set slug [join $filtered -]
 
-  regsub -- {^-+} $slug "" slug
-  regsub -- {-+$} $slug "" slug
-
-  # Remove diacritical marks
+  # Remove diacritical marks.
   set chars [::unicode::fromstring $slug]
   set decomposed [::unicode::normalize D $chars]
   set ascii [lmap c $decomposed {
     if {$c < 256} {
       string cat $c
     } else {
+      # In decomposed canonical form, these represent emoji and
+      # accents, though will also trash non-Latin alphabets.
+      # Should revisit that last decision later.
       continue
     }
   }]
   set ascii [lsearch -all -inline -not $ascii ""]
   set slug [::unicode::tostring $ascii]
+
+  # Get rid of any non-semantic hyphens.
+  regsub -- {^-+} $slug "" slug
+  regsub -- {-+$} $slug "" slug
+  regsub -- {--} $slug "-" slug
 
   return "${slug}-${ulid}"
 }
