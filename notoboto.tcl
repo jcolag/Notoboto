@@ -16,6 +16,7 @@ package require uuid
 package require yaml
 
 set configfile "~/.config/Miniboost.json"
+set xlitfile "lib/xlit.json"
 set stopword_dict {}
 
 source "ulid.tcl"
@@ -25,6 +26,10 @@ set width [expr { [winfo vrootwidth  .] / 4 * 3 }]
 set height [expr { [winfo vrootheight .] / 4 * 3 }]
 set x 0
 set y [expr { [winfo vrootheight .] - $height }]
+
+set xlitp [open $xlitfile r]
+set xlit_json [read $xlitp]
+set transliteration [::json::json2dict $xlit_json]
 
 set confp [open $configfile r]
 set conf_json [read $confp]
@@ -417,9 +422,9 @@ proc createOutlineWindow {} {
 
 # Create a filename by removing stop-words from the title and hyphenating.
 proc slugFromTitle {title stopword_dict} {
-  set title [string tolower $title]
+  global transliteration
+  set chars [::unicode::fromstring $title]
   set ulid [::ulid::ulid]
-  set words [regexp -all -inline {\w+} $title]
   set filtered {}
 
   foreach word $words {
