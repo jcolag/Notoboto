@@ -425,6 +425,19 @@ proc slugFromTitle {title stopword_dict} {
   global transliteration
   set chars [::unicode::fromstring $title]
   set ulid [::ulid::ulid]
+
+  # Transliterate non-Latin characters.
+  set ascii [lmap c $chars {
+    set high [expr { ($c >> 8) & 0xFF }]
+    set low [expr { $c & 0xFF }]
+    set row [dict get $transliteration $high]
+    set xlit [lindex $row $low]
+    ::unicode::fromstring $xlit
+  }]
+  set ascii [lsearch -all -inline -not $ascii ""]
+  set slug [::unicode::tostring [concat {*}$ascii]]
+
+  set words [regexp -all -inline {\w+} [string tolower $slug]]
   set filtered {}
 
   foreach word $words {
