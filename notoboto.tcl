@@ -19,8 +19,8 @@ set configfile "~/.config/Miniboost.json"
 set xlitfile "lib/xlit.json"
 set stopword_dict {}
 
-source "ulid.tcl"
-source "stopwords.tcl"
+source "lib/ulid.tcl"
+source "lib/stopwords.tcl"
 
 set width [expr { [winfo vrootwidth  .] / 4 * 3 }]
 set height [expr { [winfo vrootheight .] / 4 * 3 }]
