@@ -21,6 +21,7 @@ set stopword_dict {}
 
 source "lib/ulid.tcl"
 source "lib/stopwords.tcl"
+source "lib/cson.tcl"
 
 set width [expr { [winfo vrootwidth  .] / 4 * 3 }]
 set height [expr { [winfo vrootheight .] / 4 * 3 }]
