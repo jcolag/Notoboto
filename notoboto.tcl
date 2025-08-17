@@ -906,6 +906,9 @@ proc randomColor {} {
 
 # Convert HSV colors to RGB
 proc hsvToRgb {h s v} {
+  set h [expr { $h % 360 }]
+  set s [expr { $s % 256 }]
+  set v [expr { $v % 256 }]
   set Hi [expr { int( double($h) / 60 ) % 6 }]
   set f [expr { double($h) / 60 - $Hi }]
   set s [expr { double($s)/255 }]
