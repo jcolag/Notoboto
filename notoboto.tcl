@@ -897,7 +897,7 @@ proc countText {widget} {
 
 # Generate a random color
 proc randomColor {} {
-  set h [expr { int(256 * rand()) }]
+  set h [expr { int(360 * rand()) }]
   set s [expr { int(256 * rand()) }]
   set v [expr { int(256 * rand()) }]
   lassign [hsvToRgb $h $s $v] r g b
