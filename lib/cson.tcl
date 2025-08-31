@@ -103,7 +103,7 @@ proc ::cson::stringify {obj} {
       append result "\n'''\n"
     } elseif {[expr {[string is list $value] && ([llength $value]&1) == 0}] && [llength $value] > 20} {
       # Print a sub-object.
-      set inner [stringifyCson $value]
+      set inner [::cson::stringify $value]
       append result "$key:\n"
       foreach {l} [split $inner "\n"] {
         append result "  $l\n"
