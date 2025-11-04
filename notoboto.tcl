@@ -689,6 +689,16 @@ proc newCategory { } {
 proc reloadNote {} {
 }
 
+# Mark the current note as deleted.
+proc toggleNoteTrashed {} {
+  global current_note
+  set deleted [dict get $current_note isTrashed]
+
+  dict set $current_note isTrashed [! $deleted]
+
+  # Should remove from list, here
+}
+
 # Toggle whether to automatically update the note preview.
 proc autoUpdate {} {
   global update_preview
