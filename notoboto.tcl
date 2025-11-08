@@ -144,6 +144,8 @@ menu .mbar.ed -tearoff 0 -background $bg -foreground $fg
 .mbar.fl add command -label "View in Browser" -image browse -compound left -command { previewNote } -background $bg -foreground $fg
 .mbar.fl add command -label "Reload File" -image reload -compound left -command { reloadNote } -background $bg -foreground $fg
 .mbar.fl add separator
+.mbar.fl add command -label "Mark Note As Deleted" -image delete -compound left -command { toggleNoteTrashed } -background $bg -foreground $fg
+.mbar.fl add separator
 .mbar.fl add command -label "Show Outline" -image outline -compound left -command { createOutlineWindow } -background $bg -foreground $fg
 .mbar.fl add command -label "Upgrade Note Format" -image markdown -compound left -command { replaceWithMarkdown } -background $bg -foreground $fg -state disabled
 .mbar.fl add separator
