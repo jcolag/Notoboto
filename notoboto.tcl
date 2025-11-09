@@ -23,6 +23,10 @@ source "lib/ulid.tcl"
 source "lib/stopwords.tcl"
 source "lib/cson.tcl"
 
+set ppi [winfo fpixels . 1i]
+set scaling [expr {$ppi / 72.0}]
+set scaling [int $scaling]
+
 set width [expr { [winfo vrootwidth  .] / 4 * 3 }]
 set height [expr { [winfo vrootheight .] / 4 * 3 }]
 set x 0
@@ -110,7 +114,9 @@ image create photo outline -file img/list-material.png
 image create photo markdown -file img/markdown-material.png
 image create photo delete -file img/delete-material.png
 
-ttk::style configure Treeview -background $bg -foreground $fg -font uifont -fill both -expand 1
+set scaleSize [expr 24 * $scaling]
+
+ttk::style configure Treeview -background $bg -foreground $fg -font uifont -rowheight $scaleSize -fill both -expand 1
 ttk::style configure Treeview.Heading -background $fg -foreground $bg -font uifont
 
 frame .fr -background $bg
