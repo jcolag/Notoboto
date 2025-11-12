@@ -600,6 +600,7 @@ proc previewNote {{ open true }} {
   set header "<!DOCTYPE html><html><head><title>$title</title><meta charset='utf-8'>$refresh<style>$style</style>$fa</head><body>"
   set footer "</body></html>"
 
+  set key [string trim $key]
   set html [::Markdown::convert $md]
   set filename "$key.html"
   set path "$out_folder/$filename"
