@@ -26,14 +26,9 @@ db.enable_load_extension(True)
 sqlite_vec.load(db)
 db.enable_load_extension(False)
 
-# res = cur.execute("SELECT semantics FROM sqlite_master")
-# if res.fetchone() is None:
-#   db.execute('CREATE TABLE semantics (path TEXT, line INTEGER, vector FLOAT[1024])')
-
-try:
+res = cur.execute("SELECT semantics FROM sqlite_master")
+if res.fetchone() is None:
   db.execute('CREATE TABLE semantics (path TEXT, line INTEGER, vector FLOAT[1024])')
-except Exception:
-  print()
 
 for file in os.listdir(note_dir):
   filename = os.fsdecode(file)
@@ -71,15 +66,6 @@ for file in os.listdir(note_dir):
       data
     )
     db.commit()
-
-#select
-#  rowid,
-#  distance
-#from vec_examples
-#where sample_embedding match '[0.890, 0.544, 0.825, 0.961, 0.358, 0.0196, 0.521, 0.175]'
-#and k = 2
-#order by distance
-#limit 2;
 
 db.commit()
 db.close()
