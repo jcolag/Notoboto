@@ -110,7 +110,7 @@ pydantic_core==2.41.5
 pydbus==0.6.0
 pydyf==0.1.2
 pygit2==1.18.2
-Pygments==2.11.2
+Pygments==2.19.2
 PyGObject==3.42.1
 pyinotify==0.9.6
 PyJWT==2.3.0
