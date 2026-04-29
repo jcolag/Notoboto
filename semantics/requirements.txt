@@ -92,7 +92,7 @@ parso==0.8.1
 pbr==5.8.0
 pexpect==4.8.0
 pickleshare==0.7.5
-pillow==11.3.0
+pillow==12.2.0
 ply==3.11
 pop-transition==1.1.2
 prompt-toolkit==3.0.28
