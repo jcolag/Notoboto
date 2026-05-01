@@ -53,7 +53,7 @@ idna==3.3
 ifaddr==0.1.7
 imageio==2.37.0
 importlib-metadata==4.6.4
-ipython==7.31.1
+ipython==8.10.0
 jedi==0.18.0
 jeepney==0.7.1
 Jinja2==3.1.6
