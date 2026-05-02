@@ -103,7 +103,7 @@ py7zr==0.11.3+dfsg
 pycairo==1.20.1
 pychm==0.8.6
 pycparser==2.21
-pycryptodomex==3.11.0
+pycryptodomex==3.19.1
 pycups==2.0.1
 pydantic==2.12.5
 pydantic_core==2.41.5
