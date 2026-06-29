@@ -176,5 +176,5 @@ WebOb==1.8.8
 websocket-client==1.2.3
 xdg==5
 xkit==0.0.0
-zeroconf==0.149.7
+zeroconf==0.149.16
 zipp==3.19.1
