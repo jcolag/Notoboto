@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 John Colagioia <john@colagioia.net>
+#
+# SPDX-License-Identifier: AGPL-3.0-or-later
+
 import inspect, json, os, re, requests, sqlite3, sqlite_vec, struct, sys
 from ollama import chat, ChatResponse, Client
 from typing import List
