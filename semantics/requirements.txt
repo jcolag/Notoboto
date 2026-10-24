@@ -16,7 +16,7 @@ binaryornot==0.4.3
 blinker==1.4
 boolean.py==3.8
 Brlapi==0.8.3
-Brotli==1.2.0
+Brotli==1.2.1
 certifi==2024.7.4
 cffi==2.0.0
 chardet==4.0.0
