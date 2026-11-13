@@ -152,7 +152,7 @@ sessioninstaller==0.0.0
 sgmllib3k==1.0.0
 six==1.16.0
 smmap==5.0.2
-soupsieve==2.9
+soupsieve==4.0
 sqlite-vec==0.1.6
 ssh-import-id==5.11
 sympy==1.9
